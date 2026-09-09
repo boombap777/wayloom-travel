@@ -1,0 +1,48 @@
+{
+  "version": "travel-qlora-sft-v1",
+  "experiment_id": "qwen3-1.7b-travel-sft-v1",
+  "base_model": {
+    "path_env": "TRAVEL_BASE_MODEL_PATH",
+    "model_id": "Qwen/Qwen3-1.7B",
+    "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e"
+  },
+  "data": {
+    "train_path": "data/processed/v1.0/train/sft_train.jsonl",
+    "validation_path": "data/processed/v1.0/validation/sft_train.jsonl",
+    "data_manifest_path": "data/manifests/travel-v1.0.manifest.json",
+    "evaluation_path": "data/eval/v1.0/frozen_cases.jsonl"
+  },
+  "output": {
+    "adapter_dir": "models/adapters/qwen3-1.7b-travel-sft-v1",
+    "run_manifest_name": "run_manifest.json",
+    "training_log_name": "training_log.json"
+  },
+  "training": {
+    "seed": 20260902,
+    "max_sequence_length": 512,
+    "epochs": 4,
+    "per_device_batch_size": 1,
+    "gradient_accumulation_steps": 8,
+    "learning_rate": 0.0002,
+    "warmup_ratio": 0.03,
+    "weight_decay": 0.0,
+    "max_grad_norm": 1.0,
+    "logging_steps": 10
+  },
+  "lora": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": "all-linear"
+  },
+  "quantization": {
+    "bits": 4,
+    "type": "nf4",
+    "double_quant": true,
+    "compute_dtype": "bfloat16"
+  },
+  "generation": {
+    "max_new_tokens": 256,
+    "do_sample": false
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "publication-web-smoke-v1",
+  "observed_on": "2026-09-08",
+  "scope": "one actual local model HTTP smoke; not the frozen quality evaluation or a latency percentile",
+  "profile": "llama_cpp",
+  "request": "请规划行程，从重庆去北京玩3天，11月21日出发，一个人出行。",
+  "observed": {"action": "final_plan", "decision": "tool_call", "destination": "北京", "catalog_source": "demo_catalog_v1", "handler_elapsed_ms": 4994.12},
+  "external_booking_or_payment": false,
+  "model_fallback": false
+}

@@ -1,0 +1,26 @@
+name: offline-source-and-web-tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: astral-sh/setup-uv@v7
+      - run: uv sync --frozen
+      - run: uv run --no-sync pytest --cov=travel_itinerary --cov-report=json:reports/publication-coverage.json --junitxml=reports/publication-junit.xml
+      - run: uv run --no-sync python scripts/publication.py
+      - name: Verify frontend JavaScript syntax
+        run: node --check src/travel_itinerary/web_assets/app.js
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: travel-offline-test-evidence
+          path: reports/publication-*

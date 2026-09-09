@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>旅行草案 · 本地行程助手</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#request">跳到需求输入</a>
+    <header>
+      <a class="brand" href="/">TRAVEL <span>本地行程助手</span></a
+      ><span id="mode" class="badge">正在连接本地服务</span>
+    </header>
+    <main>
+      <section class="hero">
+        <p class="eyebrow">A SMALL PLAN FOR YOUR NEXT TRIP</p>
+        <h1>想去的地方，<br />从一份旅行草案开始。</h1>
+        <p>说说你的想法，补齐必要信息，再看看有哪些合适的样例方案。</p>
+      </section>
+      <p class="notice">
+        本地技术演示：不订票、不支付，不查询实时价格或酒店库存。
+      </p>
+      <ol class="steps" aria-label="规划进度">
+        <li id="step-1" aria-current="step">01 描述需求</li>
+        <li id="step-2">02 补齐信息</li>
+        <li id="step-3">03 查看草案</li>
+      </ol>
+      <div class="workspace">
+        <section class="panel" aria-labelledby="input-heading">
+          <div class="section-heading">
+            <h2 id="input-heading">这次想怎么旅行？</h2>
+            <button id="reset" class="quiet" type="button">重新开始</button>
+          </div>
+          <div class="examples">
+            <button id="example-full" type="button">杭州三日 · 完整示例</button
+            ><button id="example-short" type="button">
+              还没想好 · 补全示例
+            </button>
+          </div>
+          <div id="conversation" class="conversation" aria-live="polite"></div>
+          <form id="request-form">
+            <label for="request" id="request-label">描述你的旅行需求</label
+            ><textarea
+              id="request"
+              maxlength="2000"
+              rows="4"
+              placeholder="例如：从南京去杭州，10月1日出发玩三天，两个人，预算5000元，喜欢人文和美食。"
+              required
+            ></textarea>
+            <p id="input-help" class="muted">
+              尽量包含出发地、目的地、出发日期、天数和人数。
+            </p>
+            <button id="submit" class="primary" type="submit">
+              生成旅行草案 <span aria-hidden="true">→</span>
+            </button>
+          </form>
+          <p id="status" role="status" aria-live="polite" class="status">
+            准备就绪，先输入需求或选择一个示例。
+          </p>
+          <details class="technical">
+            <summary>关于运行模式与数据</summary>
+            <p id="mode-detail">
+              页面使用服务器实际选择的解析器，不会悄悄切换模型。
+            </p>
+            <p>
+              规则模式用于无模型演示；HF adapter 和 llama.cpp
+              模式需在终端显式启动。浏览器仅携带本轮用户文本，不持久保存会话。
+            </p>
+          </details>
+        </section>
+        <aside class="panel summary" aria-labelledby="summary-heading">
+          <p class="eyebrow">YOUR TRIP, AT A GLANCE</p>
+          <h2 id="summary-heading">需求小结</h2>
+          <p id="summary-empty" class="muted">
+            提交后，已识别的信息会出现在这里。未提供的内容不会替你编造。
+          </p>
+          <dl id="request-summary"></dl>
+          <div id="missing" class="missing" hidden></div>
+        </aside>
+      </div>
+      <section
+        id="result"
+        class="panel result"
+        tabindex="-1"
+        aria-labelledby="result-heading"
+        hidden
+      >
+        <p class="eyebrow">A DRAFT, NOT A BOOKING</p>
+        <h2 id="result-heading">你的旅行草案</h2>
+        <p id="result-message"></p>
+        <div id="plan-content"></div>
+        <div class="actions">
+          <button id="adjust" type="button">调整需求</button
+          ><button id="download" type="button">导出 JSON</button>
+        </div>
+        <details class="technical">
+          <summary>查看结构化决策与工具调用</summary>
+          <pre id="json-result"></pre>
+        </details>
+      </section>
+      <footer>自编演示目录 · 五个目的地样例 · 所有费用仅作技术演示</footer>
+    </main>
+  </body>
+</html>

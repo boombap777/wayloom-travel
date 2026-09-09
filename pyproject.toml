@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "travel-itinerary-assistant"
+version = "0.1.0"
+description = "Offline travel requirement parsing and bounded itinerary-planning PoC."
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+authors = [{name = "Liu Tianxiang and project contributors"}]
+dependencies = []
+
+[project.scripts]
+travel-itinerary = "travel_itinerary.cli:main"
+travel-itinerary-web = "travel_itinerary.web:main"
+
+[dependency-groups]
+dev = ["pytest>=8.0", "pytest-cov>=6.0", "ruff>=0.12"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/travel_itinerary"]

@@ -1,0 +1,127 @@
+{
+  "adapter_artifacts": [
+    {
+      "bytes": 1161,
+      "filename": "adapter_config.json",
+      "sha256": "c03a8d372d8e5ca45b8e3e005d36b78ac9e3b930f13c5834cd3410df65675465"
+    },
+    {
+      "bytes": 69782384,
+      "filename": "adapter_model.safetensors",
+      "sha256": "cd04cc2df3b3aa673d44324c7956c15e9b6185e99c69f493dd466ee20080a39c"
+    },
+    {
+      "bytes": 4256,
+      "filename": "chat_template.jinja",
+      "sha256": "51fa65c79bb57f058dc7ef8734884bd325fe9d45bb03a61bfef59785d3bc2da9"
+    },
+    {
+      "bytes": 5312,
+      "filename": "README.md",
+      "sha256": "769772d15ad4dd632273aeed53d8732bd91ec12fe1f730b2a0e4d723e9405e57"
+    },
+    {
+      "bytes": 11422650,
+      "filename": "tokenizer.json",
+      "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506"
+    },
+    {
+      "bytes": 722,
+      "filename": "tokenizer_config.json",
+      "sha256": "b3d4aae9670f7c2de3e3b32675b0118e7e7b517544f5ab32efe04bd74f2238c1"
+    },
+    {
+      "bytes": 5265,
+      "filename": "training_args.bin",
+      "sha256": "891b5e9cf62b833749de32ce806989f5fa31715aa93d18da077ca6beaf77a6ec"
+    }
+  ],
+  "base_model": {
+    "artifacts": [
+      {
+        "bytes": 3441185608,
+        "filename": "model-00001-of-00002.safetensors",
+        "sha256": "169ad53ec313c3a34b06c0809216e4fc072cce444a5d4ff2b59690d064130ed5"
+      },
+      {
+        "bytes": 622329984,
+        "filename": "model-00002-of-00002.safetensors",
+        "sha256": "912becff8d60672aa8628ef08c05898d9adf17c2ad4ae3caf99b065622fdeff9"
+      }
+    ],
+    "model_id": "Qwen/Qwen3-1.7B-Base"
+  },
+  "config": {
+    "adapter_dir": "E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\adapters\\qwen3-1.7b-travel-sft-v1",
+    "base_model_id": "Qwen/Qwen3-1.7B-Base",
+    "base_model_path": "E:\\AI-Agent-Lab\\projects\\post-training-slot-extractor\\models\\base\\qwen3-1.7b-hf",
+    "compute_dtype": "bfloat16",
+    "config_path": "E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\configs\\training\\qwen3_1_7b_travel_sft_v1.json",
+    "data_manifest_path": "E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\data\\manifests\\travel-v1.0.manifest.json",
+    "double_quant": true,
+    "epochs": 4,
+    "evaluation_path": "E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\data\\eval\\v1.0\\frozen_cases.jsonl",
+    "experiment_id": "qwen3-1.7b-travel-sft-v1",
+    "generation_do_sample": false,
+    "generation_max_new_tokens": 256,
+    "gradient_accumulation_steps": 8,
+    "learning_rate": 0.0002,
+    "logging_steps": 10,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "lora_rank": 16,
+    "lora_target_modules": "all-linear",
+    "max_grad_norm": 1.0,
+    "max_sequence_length": 512,
+    "per_device_batch_size": 1,
+    "project_root": "E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant",
+    "quantization_bits": 4,
+    "quantization_type": "nf4",
+    "run_manifest_name": "run_manifest.json",
+    "seed": 20260902,
+    "train_path": "E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\data\\processed\\v1.0\\train\\sft_train.jsonl",
+    "training_log_name": "training_log.json",
+    "validation_path": "E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\data\\processed\\v1.0\\validation\\sft_train.jsonl",
+    "warmup_ratio": 0.03,
+    "weight_decay": 0.0
+  },
+  "config_sha256": "038ae1a332b4387b04a0f4e037a600e75d788096e2d35fe0f5560368fd4c230d",
+  "data": {
+    "base_model_path": "E:\\AI-Agent-Lab\\projects\\post-training-slot-extractor\\models\\base\\qwen3-1.7b-hf",
+    "data_manifest_sha256": "fb1819b85ab9ad0a40e6ba0b0bb84dc520d84a8889a41d0e14a18ff5b3c54e84",
+    "evaluation_sha256": "d63498bb841bab8724c62fba17b7f7f6054bd9d1ca330ad42ba7092a807c2183",
+    "experiment_id": "qwen3-1.7b-travel-sft-v1",
+    "train_count": 480,
+    "train_sha256": "d7c1f101e77b44275268af2ac937648f3ff4880409b093b625aa74955ca81c46",
+    "validation_count": 80,
+    "validation_sha256": "b4ac516f23fff5c7992fe66a30992d952296f99965aba1c89c5a1d4150449400"
+  },
+  "dpo_status": "prepared_data_only_not_executed",
+  "experiment_id": "qwen3-1.7b-travel-sft-v1",
+  "lora": {
+    "alpha": 32,
+    "dropout": 0.05,
+    "rank": 16,
+    "target_modules": "all-linear",
+    "total_parameters": 1738007552,
+    "trainable_parameters": 17432576
+  },
+  "manifest_version": "travel-qlora-sft-run-v1",
+  "result": {
+    "elapsed_seconds": 1808.884,
+    "eval_loss": 0.0003547132364474237,
+    "global_step": 240,
+    "training_loss": 0.05544457078394771
+  },
+  "runtime": {
+    "accelerate": "1.14.0",
+    "bitsandbytes": "0.50.2",
+    "cuda_runtime": "12.8",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "peak_cuda_memory_mib": 3436.507,
+    "peft": "0.18.1",
+    "torch": "2.11.0+cu128",
+    "transformers": "5.14.1"
+  },
+  "status": "complete"
+}

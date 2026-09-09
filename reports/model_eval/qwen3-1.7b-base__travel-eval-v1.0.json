@@ -1,0 +1,2443 @@
+{
+  "report_version": "travel-model-eval-v1",
+  "experiment_id": "qwen3-1.7b-travel-sft-v1",
+  "model_variant": "base",
+  "base_model_id": "Qwen/Qwen3-1.7B-Base",
+  "base_model_path": "E:\\AI-Agent-Lab\\projects\\post-training-slot-extractor\\models\\base\\qwen3-1.7b-hf",
+  "adapter_path": null,
+  "adapter_sha256": null,
+  "evaluation_path": "E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\data\\eval\\v1.0\\frozen_cases.jsonl",
+  "evaluation_sha256": "d63498bb841bab8724c62fba17b7f7f6054bd9d1ca330ad42ba7092a807c2183",
+  "case_count": 120,
+  "generation": {
+    "max_new_tokens": 256,
+    "do_sample": false
+  },
+  "metrics": {
+    "json_valid_rate": 1.0,
+    "contract_valid_rate": 0.0,
+    "action_exact_match": 0.0,
+    "slot_micro_f1": 0.0,
+    "tool_argument_exact_match": 0.0,
+    "latency_ms_p50": 3978.435,
+    "latency_ms_p95": 8466.814,
+    "latency_ms_mean": 4744.856,
+    "output_tokens_mean": 45.592
+  },
+  "cases": [
+    {
+      "id": "travel-v1.0-evaluation-0001",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 4949.386,
+      "output_tokens": 34,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0002",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 8466.814,
+      "output_tokens": 78,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"city\": \"北京\",\n  \"destination\": \"厦门\",\n  \"departure_date\": \"2026-08-20\",\n  \"travel_days\": 3,\n  \"people\": 1,\n  \"budget\": 6800,\n  \"preference\": \"自然和休闲\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0003",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3513.768,
+      "output_tokens": 34,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"出行人数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0004",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 3968.428,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0005",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3951.548,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0006",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3455.246,
+      "output_tokens": 33,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"目的地\",\n    \"天数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0007",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3081.084,
+      "output_tokens": 29,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0008",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5144.091,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0009",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 8353.806,
+      "output_tokens": 80,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"departure_city\": \"长沙\",\n  \"destination\": \"杭州\",\n  \"departure_date\": \"2026-08-20\",\n  \"travel_days\": 3,\n  \"party_size\": 4,\n  \"budget\": 6800,\n  \"preference\": \"人文和海边\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0010",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5082.398,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0011",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3201.929,
+      "output_tokens": 30,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0012",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3960.167,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0013",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 8057.899,
+      "output_tokens": 78,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"departure_city\": \"广州\",\n  \"destination\": \"未知\",\n  \"departure_date\": \"2026-08-20\",\n  \"travel_days\": 4,\n  \"party_size\": 3,\n  \"budget\": 6800,\n  \"preference\": \"摄影\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0014",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3924.072,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0015",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3070.598,
+      "output_tokens": 29,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"出行人数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0016",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5033.409,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0017",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3193.601,
+      "output_tokens": 30,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0018",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3754.553,
+      "output_tokens": 34,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0019",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5118.183,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0020",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3905.103,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0021",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 8247.527,
+      "output_tokens": 79,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"departure_city\": \"上海\",\n  \"destination\": \"杭州\",\n  \"departure_date\": \"2026-08-20\",\n  \"travel_days\": 5,\n  \"traveler_count\": 1,\n  \"budget\": 8500,\n  \"preference\": \"休闲\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0022",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5045.253,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0023",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 8192.875,
+      "output_tokens": 79,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"departure_city\": \"苏州\",\n  \"arrival_city\": \"未知\",\n  \"departure_date\": \"2026-08-20\",\n  \"travel_days\": 5,\n  \"party_size\": 4,\n  \"budget\": 3200,\n  \"preference\": \"自然\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0024",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 4635.339,
+      "output_tokens": 45,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"目的地\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0025",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3680.271,
+      "output_tokens": 36,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"出行人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0026",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 4306.233,
+      "output_tokens": 41,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"预算\",\n    \"天数\",\n    \"出行人数\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0027",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5178.964,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0028",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3967.364,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0029",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5062.119,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0030",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3294.462,
+      "output_tokens": 30,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0031",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3380.592,
+      "output_tokens": 34,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0032",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 4151.294,
+      "output_tokens": 41,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"预算\",\n    \"天数\",\n    \"出行人数\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0033",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3023.674,
+      "output_tokens": 29,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0034",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 4986.046,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0035",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 4795.851,
+      "output_tokens": 45,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"目的地\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0036",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 12509.04,
+      "output_tokens": 123,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"departure_city\": \"广州\",\n  \"destination\": \"厦门\",\n  \"departure_date\": \"2026-08-20\",\n  \"travel_days\": 5,\n  \"traveler_count\": 1,\n  \"budget\": 3200,\n  \"preference\": \"美食和休闲\",\n  \"missing_fields\": [\n    \"departure_city\",\n    \"destination\",\n    \"departure_date\",\n    \"travel_days\",\n    \"traveler_count\",\n    \"budget\",\n    \"preference\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0037",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3326.939,
+      "output_tokens": 33,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"天数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0038",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5180.292,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0039",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3169.523,
+      "output_tokens": 30,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0040",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3520.314,
+      "output_tokens": 34,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0041",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3682.699,
+      "output_tokens": 34,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"出行人数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0042",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 4107.295,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0043",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 9968.236,
+      "output_tokens": 97,
+      "raw_output": "{\n  \"action\": \"tool_call\",\n  \"tool\": \"search_trip_options\",\n  \"parameters\": {\n    \"departure_city\": \"上海\",\n    \"destination_city\": \"成都\",\n    \"departure_date\": \"2026-09-07\",\n    \"travel_days\": 5,\n    \"number_of_people\": 5,\n    \"budget\": 4200,\n    \"preference\": \"自然和休闲\"\n  }\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0044",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 3356.597,
+      "output_tokens": 31,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0045",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3762.367,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0046",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3498.507,
+      "output_tokens": 34,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\",\n    \"人数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0047",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5096.313,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0048",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3464.154,
+      "output_tokens": 33,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0049",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3826.931,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0050",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3745.499,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0051",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 8449.023,
+      "output_tokens": 80,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"departure_city\": \"广州\",\n  \"destination\": \"西安\",\n  \"departure_date\": \"2026-08-20\",\n  \"travel_days\": 5,\n  \"party_size\": 2,\n  \"budget\": 4200,\n  \"preference\": \"自然和美食\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0052",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3644.917,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0053",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3475.643,
+      "output_tokens": 33,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0054",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 4894.007,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0055",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 4586.467,
+      "output_tokens": 45,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"目的地\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0056",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 3717.438,
+      "output_tokens": 38,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0057",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3861.837,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0058",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 4346.441,
+      "output_tokens": 41,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"预算\",\n    \"天数\",\n    \"出行人数\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0059",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 4399.668,
+      "output_tokens": 42,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"出行日期\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0060",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3901.231,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0061",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 8166.816,
+      "output_tokens": 79,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"departure_city\": \"深圳\",\n  \"arrival_city\": \"目的地\",\n  \"departure_date\": \"2026-08-20\",\n  \"travel_days\": 5,\n  \"party_size\": 5,\n  \"budget\": 6800,\n  \"preference\": \"休闲\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0062",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5003.275,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0063",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3356.351,
+      "output_tokens": 31,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0064",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 10110.763,
+      "output_tokens": 98,
+      "raw_output": "{\n  \"action\": \"tool_call\",\n  \"tool\": \"search_trip_options\",\n  \"parameters\": {\n    \"departure_city\": \"上海\",\n    \"destination_city\": \"杭州\",\n    \"departure_date\": \"2026-09-19\",\n    \"travel_days\": 3,\n    \"number_of_people\": 5,\n    \"budget\": 10000,\n    \"preference\": \"休闲和人文\"\n  }\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0065",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3998.321,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0066",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 2751.378,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0067",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 2636.239,
+      "output_tokens": 33,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0068",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3845.877,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0069",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 2376.456,
+      "output_tokens": 33,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0070",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 2287.198,
+      "output_tokens": 30,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0071",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3131.31,
+      "output_tokens": 41,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0072",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 2855.236,
+      "output_tokens": 38,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\",\n    \"人数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0073",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 2556.752,
+      "output_tokens": 33,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0074",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 3620.265,
+      "output_tokens": 34,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0075",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 4542.886,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0076",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5360.218,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0077",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 4129.198,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0078",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 4050.863,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0079",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5384.389,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0080",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3751.083,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0081",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 4888.31,
+      "output_tokens": 45,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"目的地\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0082",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3990.0,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0083",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 8860.214,
+      "output_tokens": 81,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"departure_city\": \"广州\",\n  \"destination\": \"杭州\",\n  \"departure_date\": \"2026-09-07\",\n  \"travel_days\": 4,\n  \"traveler_count\": 1,\n  \"budget\": 5000,\n  \"preference\": \"自然和人文\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0084",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5329.837,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0085",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 4407.557,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0086",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 6151.001,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0087",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5119.711,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0088",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5903.355,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0089",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 4060.748,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0090",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3190.672,
+      "output_tokens": 30,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0091",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3165.537,
+      "output_tokens": 30,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0092",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5234.509,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0093",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 4330.979,
+      "output_tokens": 42,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0094",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 10603.981,
+      "output_tokens": 104,
+      "raw_output": "{\n  \"action\": \"tool_call\",\n  \"tool\": \"search_trip_options\",\n  \"parameters\": {\n    \"departure_city\": \"广州\",\n    \"arrival_city\": \"目的地\",\n    \"departure_date\": \"2026-09-19\",\n    \"travel_days\": 4,\n    \"number_of_people\": 3,\n    \"budget\": 10000,\n    \"preference\": \"美食\",\n    \"location_preference\": \"市中心\"\n  }\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0095",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3509.775,
+      "output_tokens": 34,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0096",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 3540.696,
+      "output_tokens": 33,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0097",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3984.43,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0098",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 9114.534,
+      "output_tokens": 83,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"departure_city\": \"上海\",\n  \"destination\": \"杭州\",\n  \"departure_date\": \"2026-08-20\",\n  \"travel_days\": 5,\n  \"party_size\": 3,\n  \"budget\": 10000,\n  \"preference\": \"摄影, 海边\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0099",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5402.739,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0100",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3372.046,
+      "output_tokens": 30,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0101",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 3573.673,
+      "output_tokens": 32,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"目的地\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0102",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3813.714,
+      "output_tokens": 35,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\",\n    \"出行人数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0103",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 8350.141,
+      "output_tokens": 78,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"city\": \"北京\",\n  \"destination\": \"杭州\",\n  \"departure_date\": \"2026-08-20\",\n  \"travel_days\": 4,\n  \"people\": 2,\n  \"budget\": 8500,\n  \"preference\": \"美食和休闲\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0104",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 3379.221,
+      "output_tokens": 31,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0105",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 8282.001,
+      "output_tokens": 80,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"departure_city\": \"广州\",\n  \"destination\": \"未知\",\n  \"departure_date\": \"2026-08-20\",\n  \"travel_days\": 4,\n  \"party_size\": 3,\n  \"budget\": 6800,\n  \"preference\": \"人文和休闲\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0106",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3893.497,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0107",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 5312.323,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0108",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 5252.046,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0109",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 5256.225,
+      "output_tokens": 49,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发城市\",\n    \"目的地\",\n    \"日期\",\n    \"天数\",\n    \"人数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0110",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3978.435,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0111",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3021.391,
+      "output_tokens": 29,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"出行人数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0112",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3696.585,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0113",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3056.316,
+      "output_tokens": 30,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"出发日期\",\n    \"旅行天数\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0114",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 7767.183,
+      "output_tokens": 77,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"departure_city\": \"北京\",\n  \"destination\": \"杭州\",\n  \"departure_date\": \"2026-08-20\",\n  \"travel_days\": 5,\n  \"people\": 2,\n  \"budget\": 6800,\n  \"preference\": \"摄影\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0115",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": null,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 7909.246,
+      "output_tokens": 80,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"departure_city\": \"上海\",\n  \"destination\": \"杭州\",\n  \"departure_date\": \"2026-08-20\",\n  \"travel_days\": 3,\n  \"party_size\": 3,\n  \"budget\": 5000,\n  \"preference\": \"美食和自然\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0116",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 7809.398,
+      "output_tokens": 79,
+      "raw_output": "{\n  \"action\": \"search_trip_options\",\n  \"departure_city\": \"广州\",\n  \"destination\": \"杭州\",\n  \"departure_date\": \"2026-09-19\",\n  \"travel_days\": 5,\n  \"party_size\": 3,\n  \"budget\": 10000,\n  \"preference\": \"自然\"\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0117",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3626.918,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0118",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 3333.962,
+      "output_tokens": 33,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0119",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count",
+        "budget_cny",
+        "themes",
+        "hotel_preference"
+      ],
+      "latency_ms": 3697.821,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    },
+    {
+      "id": "travel-v1.0-evaluation-0120",
+      "json_valid": true,
+      "contract_valid": false,
+      "contract_error": "invalid_contract:'request'",
+      "action_match": false,
+      "tool_arguments_match": false,
+      "slot_errors": [
+        "departure_city",
+        "destination",
+        "start_date",
+        "days",
+        "traveler_count"
+      ],
+      "latency_ms": 3671.851,
+      "output_tokens": 37,
+      "raw_output": "{\n  \"action\": \"clarify\",\n  \"missing_fields\": [\n    \"目的地\",\n    \"旅行天数\",\n    \"预算\",\n    \"偏好\"\n  ]\n}"
+    }
+  ]
+}

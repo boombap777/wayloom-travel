@@ -1,0 +1,20 @@
+# Future preference-training contract only. Run it only after a real SFT adapter is recorded.
+model_name_or_path: Qwen/Qwen3-4B-Instruct
+adapter_name_or_path: models/adapters/qwen3-4b-travel-v0.1
+stage: dpo
+do_train: true
+dataset_dir: data/processed/v1.0/train
+dataset: travel_dpo_v1_0
+template: qwen
+finetuning_type: lora
+quantization_bit: 4
+lora_target: all
+cutoff_len: 4096
+learning_rate: 5.0e-6
+num_train_epochs: 1.0
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+pref_beta: 0.1
+output_dir: models/adapters/qwen3-4b-travel-dpo-v0.1
+logging_steps: 10
+save_strategy: epoch

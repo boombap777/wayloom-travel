@@ -1,0 +1,22 @@
+{
+  "version": "travel-llama-cpp-deployment-v1",
+  "deployment_id": "qwen3-1.7b-travel-sft-v1-q4km-lora",
+  "base_gguf": "models/gguf/qwen3-1.7b-base-q4-k-m.gguf",
+  "lora_gguf": "models/gguf/qwen3-1.7b-travel-sft-v1-lora-f16.gguf",
+  "system_prompt": "configs/training/travel_system_prompt.txt",
+  "frozen_evaluation": "data/eval/v1.0/frozen_cases.jsonl",
+  "case_ids": [
+    "travel-v1.0-evaluation-0001",
+    "travel-v1.0-evaluation-0002",
+    "travel-v1.0-evaluation-0004"
+  ],
+  "runtime": {
+    "context_size": 2048,
+    "n_predict": 192,
+    "gpu_layers": 99,
+    "temperature": 0.0,
+    "seed": 20260902,
+    "timeout_seconds": 180
+  },
+  "report_path": "reports/deployment/llama_cpp_q4km_lora_v1.json"
+}

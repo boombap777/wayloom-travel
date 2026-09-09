@@ -1,0 +1,25 @@
+{
+  "version": "travel-v1.0",
+  "reference_date": "2026-08-20",
+  "seed": 20260902,
+  "splits": {
+    "train": 480,
+    "validation": 80,
+    "evaluation": 120
+  },
+  "human_review_queue_size": 30,
+  "scenario_weights": {
+    "complete_full": 42,
+    "complete_optional_sparse": 18,
+    "missing_origin": 8,
+    "missing_destination": 8,
+    "missing_date": 8,
+    "missing_days": 8,
+    "missing_travelers": 8
+  },
+  "departure_cities": ["南京", "上海", "广州", "深圳", "苏州", "武汉", "长沙", "重庆"],
+  "destinations": ["杭州", "成都", "厦门", "北京", "西安"],
+  "themes": ["人文", "美食", "自然", "海边", "摄影", "休闲"],
+  "hotel_preferences": ["市中心", "靠近地铁", "经济型", "高档"]
+}
+

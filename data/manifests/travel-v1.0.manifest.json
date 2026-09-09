@@ -1,0 +1,102 @@
+{
+  "version": "travel-v1.0",
+  "reference_date": "2026-08-20",
+  "generator_seed": 20260902,
+  "counts": {
+    "train": 480,
+    "validation": 80,
+    "evaluation": 120
+  },
+  "normalised_input_overlap": {
+    "train_validation": 0,
+    "train_evaluation": 0,
+    "validation_evaluation": 0
+  },
+  "contract_error_count": 0,
+  "legacy_term_hit_count": 0,
+  "rule_baseline_contract_mismatch_count": 0,
+  "coverage": {
+    "train": {
+      "scenario_type": {
+        "complete_full": 207,
+        "complete_optional_sparse": 83,
+        "missing_date": 34,
+        "missing_days": 38,
+        "missing_destination": 44,
+        "missing_origin": 42,
+        "missing_travelers": 32
+      },
+      "date_style": {
+        "full_date": 149,
+        "month_day": 144,
+        "none": 34,
+        "relative": 153
+      },
+      "expected_action": {
+        "clarify": 190,
+        "tool_call": 290
+      }
+    },
+    "validation": {
+      "scenario_type": {
+        "complete_full": 28,
+        "complete_optional_sparse": 12,
+        "missing_date": 8,
+        "missing_days": 6,
+        "missing_destination": 8,
+        "missing_origin": 12,
+        "missing_travelers": 6
+      },
+      "date_style": {
+        "full_date": 26,
+        "month_day": 23,
+        "none": 8,
+        "relative": 23
+      },
+      "expected_action": {
+        "clarify": 40,
+        "tool_call": 40
+      }
+    },
+    "evaluation": {
+      "scenario_type": {
+        "complete_full": 50,
+        "complete_optional_sparse": 18,
+        "missing_date": 10,
+        "missing_days": 16,
+        "missing_destination": 10,
+        "missing_origin": 5,
+        "missing_travelers": 11
+      },
+      "date_style": {
+        "full_date": 37,
+        "month_day": 40,
+        "none": 10,
+        "relative": 33
+      },
+      "expected_action": {
+        "clarify": 52,
+        "tool_call": 68
+      }
+    }
+  },
+  "human_review": {
+    "status": "pending",
+    "claim_allowed": false,
+    "message": "A reviewer must record reviewed IDs before manual-review claims are allowed.",
+    "queue_count": 30
+  },
+  "sha256": {
+    "raw": {
+      "train": "31ec4a5c57a56a7cb8907b620dcf79c703ef67d58834baa36521a15fd624c0ec",
+      "validation": "d28c78055745eea02cce6b3b2d5e60eba08944b02a328e40cb19a9ee6243d085",
+      "evaluation": "d63498bb841bab8724c62fba17b7f7f6054bd9d1ca330ad42ba7092a807c2183"
+    },
+    "processed": {
+      "train_sft": "d7c1f101e77b44275268af2ac937648f3ff4880409b093b625aa74955ca81c46",
+      "train_dpo": "3243e2b2100be62a2010ab2b9635a291afe4e86075fb12913b440f4e43ddba61",
+      "validation_sft": "b4ac516f23fff5c7992fe66a30992d952296f99965aba1c89c5a1d4150449400"
+    }
+  },
+  "config_sha256": "2230d4767d86c08648a212f0b1594a13768a38408001e1a789aa776e53f9c298"
+}

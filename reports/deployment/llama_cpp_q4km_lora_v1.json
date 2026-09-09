@@ -1,0 +1,247 @@
+{
+  "report_version": "travel-llama-cpp-deploy-v1",
+  "deployment_id": "qwen3-1.7b-travel-sft-v1-q4km-lora",
+  "config_version": "travel-llama-cpp-deployment-v1",
+  "measurement_scope": "Three selected cases from the versioned frozen split. Each result is a one-shot llama-cli process invocation, so wall latency includes process startup and model load.",
+  "repair_policy": "Only a missing tool_call.arguments object may be rebuilt from an already-complete model request. No missing slot is inferred or filled.",
+  "artifacts": {
+    "base_gguf": "E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf",
+    "base_gguf_sha256": "d2387ca2dbfee2ffabce7120d3770dadca0b293052bc2f0e138fdc940d9bc7b5",
+    "lora_gguf": "E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-travel-sft-v1-lora-f16.gguf",
+    "lora_gguf_sha256": "ca19e1e80b143158eb1c9ca991dd4b2a9681213e3281b762a198a72a1da38664",
+    "system_prompt": "E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\configs\\training\\travel_system_prompt.txt",
+    "system_prompt_sha256": "b0f3167a2bd40a236a237a366685668fe0928780219dc22ee6db80a7c26832c0",
+    "frozen_evaluation": "E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\data\\eval\\v1.0\\frozen_cases.jsonl",
+    "frozen_evaluation_sha256": "d63498bb841bab8724c62fba17b7f7f6054bd9d1ca330ad42ba7092a807c2183",
+    "config_sha256": "66887696f8f930de99ee4c033e57ad6c40f878600fc64f12a76f5c691ac21ed4"
+  },
+  "runtime": {
+    "llama_cli": "E:\\AI-Agent-Lab\\tools\\llama.cpp\\llama-cli.exe",
+    "llama_cli_version": "version: 0.1.2-dev (build 10545, commit a30273376)\nbuilt with Clang 20.1.8 for Windows x86_64",
+    "context_size": 2048,
+    "n_predict": 192,
+    "gpu_layers": 99,
+    "temperature": 0.0,
+    "seed": 20260902,
+    "reasoning": "off"
+  },
+  "metrics": {
+    "case_count": 3,
+    "raw_json_valid_rate": 1.0,
+    "raw_contract_valid_rate": 0.6666666666666666,
+    "contract_valid_rate_after_repair": 1.0,
+    "action_exact_match_after_repair": 1.0,
+    "tool_argument_exact_match_after_repair": 1.0,
+    "mechanical_tool_argument_repair_count": 1,
+    "one_shot_wall_latency_ms_p50": 4418.105,
+    "one_shot_wall_latency_ms_p95": 4658.694,
+    "one_shot_wall_latency_ms_mean": 4369.792,
+    "generation_tokens_per_second_p50": 92.2,
+    "generation_tokens_per_second_p95": 94.6
+  },
+  "cases": [
+    {
+      "id": "travel-v1.0-evaluation-0001",
+      "expected_action": "tool_call",
+      "exit_code": 0,
+      "wall_latency_ms": 4418.105,
+      "prompt_tokens_per_second": 1842.5,
+      "generation_tokens_per_second": 90.2,
+      "raw_json_valid": true,
+      "raw_contract_valid": false,
+      "raw_contract_error": "invalid_contract:'arguments'",
+      "repaired_contract_valid": true,
+      "repaired_contract_error": null,
+      "repair_notes": [
+        "rebuilt_tool_arguments_from_complete_model_request"
+      ],
+      "action_match_after_repair": true,
+      "tool_arguments_match_after_repair": true,
+      "raw_model_json": {
+        "action": "tool_call",
+        "message": "正在查询本地演示目录中的旅行选项。",
+        "request": {
+          "budget_cny": 8500,
+          "days": 5,
+          "departure_city": "苏州",
+          "destination": "西安",
+          "hotel_preference": "高档",
+          "start_date": "2026-08-21",
+          "themes": [
+            "休闲",
+            "海边"
+          ],
+          "traveler_count": 5
+        },
+        "tool_call": {
+          "name": "search_trip_options"
+        }
+      },
+      "repaired_decision": {
+        "action": "tool_call",
+        "request": {
+          "departure_city": "苏州",
+          "destination": "西安",
+          "start_date": "2026-08-21",
+          "days": 5,
+          "traveler_count": 5,
+          "budget_cny": 8500,
+          "themes": [
+            "休闲",
+            "海边"
+          ],
+          "hotel_preference": "高档"
+        },
+        "message": "正在查询本地演示目录中的旅行选项。",
+        "tool_call": {
+          "name": "search_trip_options",
+          "arguments": {
+            "departure_city": "苏州",
+            "destination": "西安",
+            "start_date": "2026-08-21",
+            "days": 5,
+            "traveler_count": 5,
+            "budget_cny": 8500,
+            "themes": [
+              "休闲",
+              "海边"
+            ],
+            "hotel_preference": "高档"
+          }
+        }
+      },
+      "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从苏州去西安玩5天，明天出发，五个人出行，希望住高档，预算8500元，喜欢休闲和海边。\n{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 8500, \"days\": 5, \"departure_city\": \"苏州\", \"destination\": \"西安\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-08-21\", \"themes\": [\"休闲\", \"海边\"], \"traveler_count\": 5}, \"tool_call\": {\"name\": \"search_trip_options\"}}\n\n[ Prompt: 1842.5 t/s | Generation: 90.2 t/s ]\n\n\nExiting...\n",
+      "raw_cli_stderr": ""
+    },
+    {
+      "id": "travel-v1.0-evaluation-0002",
+      "expected_action": "clarify",
+      "exit_code": 0,
+      "wall_latency_ms": 4032.578,
+      "prompt_tokens_per_second": 2327.5,
+      "generation_tokens_per_second": 92.2,
+      "raw_json_valid": true,
+      "raw_contract_valid": true,
+      "raw_contract_error": null,
+      "repaired_contract_valid": true,
+      "repaired_contract_error": null,
+      "repair_notes": [],
+      "action_match_after_repair": true,
+      "tool_arguments_match_after_repair": null,
+      "raw_model_json": {
+        "action": "clarify",
+        "message": "为了生成行程，请补充：出发城市。",
+        "missing_fields": [
+          "departure_city"
+        ],
+        "request": {
+          "budget_cny": 6800,
+          "days": 3,
+          "departure_city": null,
+          "destination": "厦门",
+          "hotel_preference": "高档",
+          "start_date": "2026-08-21",
+          "themes": [
+            "自然",
+            "休闲"
+          ],
+          "traveler_count": 1
+        }
+      },
+      "repaired_decision": {
+        "action": "clarify",
+        "request": {
+          "departure_city": null,
+          "destination": "厦门",
+          "start_date": "2026-08-21",
+          "days": 3,
+          "traveler_count": 1,
+          "budget_cny": 6800,
+          "themes": [
+            "自然",
+            "休闲"
+          ],
+          "hotel_preference": "高档"
+        },
+        "message": "为了生成行程，请补充：出发城市。",
+        "missing_fields": [
+          "departure_city"
+        ]
+      },
+      "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，明天去厦门玩3天，1个人出行，希望住高档，预算6800元，喜欢自然和休闲。\n{\"action\": \"clarify\", \"message\": \"为了生成行程，请补充：出发城市。\", \"missing_fields\": [\"departure_city\"], \"request\": {\"budget_cny\": 6800, \"days\": 3, \"departure_city\": null, \"destination\": \"厦门\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-08-21\", \"themes\": [\"自然\", \"休闲\"], \"traveler_count\": 1}}\n\n[ Prompt: 2327.5 t/s | Generation: 92.2 t/s ]\n\n\nExiting...\n",
+      "raw_cli_stderr": ""
+    },
+    {
+      "id": "travel-v1.0-evaluation-0004",
+      "expected_action": "tool_call",
+      "exit_code": 0,
+      "wall_latency_ms": 4658.694,
+      "prompt_tokens_per_second": 2143.4,
+      "generation_tokens_per_second": 94.6,
+      "raw_json_valid": true,
+      "raw_contract_valid": true,
+      "raw_contract_error": null,
+      "repaired_contract_valid": true,
+      "repaired_contract_error": null,
+      "repair_notes": [],
+      "action_match_after_repair": true,
+      "tool_arguments_match_after_repair": true,
+      "raw_model_json": {
+        "action": "tool_call",
+        "message": "正在查询本地演示目录中的旅行选项。",
+        "request": {
+          "budget_cny": null,
+          "days": 3,
+          "departure_city": "重庆",
+          "destination": "北京",
+          "hotel_preference": null,
+          "start_date": "2026-11-21",
+          "themes": [],
+          "traveler_count": 1
+        },
+        "tool_call": {
+          "arguments": {
+            "budget_cny": null,
+            "days": 3,
+            "departure_city": "重庆",
+            "destination": "北京",
+            "hotel_preference": null,
+            "start_date": "2026-11-21",
+            "themes": [],
+            "traveler_count": 1
+          },
+          "name": "search_trip_options"
+        }
+      },
+      "repaired_decision": {
+        "action": "tool_call",
+        "request": {
+          "departure_city": "重庆",
+          "destination": "北京",
+          "start_date": "2026-11-21",
+          "days": 3,
+          "traveler_count": 1,
+          "budget_cny": null,
+          "themes": [],
+          "hotel_preference": null
+        },
+        "message": "正在查询本地演示目录中的旅行选项。",
+        "tool_call": {
+          "name": "search_trip_options",
+          "arguments": {
+            "budget_cny": null,
+            "days": 3,
+            "departure_city": "重庆",
+            "destination": "北京",
+            "hotel_preference": null,
+            "start_date": "2026-11-21",
+            "themes": [],
+            "traveler_count": 1
+          }
+        }
+      },
+      "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从重庆去北京玩3天，11月21日出发，一个人出行。\n{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"重庆\", \"destination\": \"北京\", \"hotel_preference\": null, \"start_date\": \"2026-11-21\", \"themes\": [], \"traveler_count\": 1}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"重庆\", \"destination\": \"北京\", \"hotel_preference\": null, \"start_date\": \"2026-11-21\", \"themes\": [], \"traveler_count\": 1}, \"name\": \"search_trip_options\"}}\n\n[ Prompt: 2143.4 t/s | Generation: 94.6 t/s ]\n\n\nExiting...\n",
+      "raw_cli_stderr": ""
+    }
+  ]
+}

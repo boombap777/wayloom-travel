@@ -1,0 +1,2492 @@
+{
+  "report_version": "travel-llama-cpp-performance-v1",
+  "generated_at": "2026-09-05T11:08:14.328107+00:00",
+  "deployment_id": "qwen3-1.7b-travel-sft-v1-q4km-lora",
+  "evidence_scope": "Cold results are independent llama-cli processes including model load. Warm results are sequential HTTP requests after declared warm-up against one loopback-only llama-server. Neither is a concurrent service load test or production SLA.",
+  "artifacts": {
+    "base_gguf_sha256": "d2387ca2dbfee2ffabce7120d3770dadca0b293052bc2f0e138fdc940d9bc7b5",
+    "lora_gguf_sha256": "ca19e1e80b143158eb1c9ca991dd4b2a9681213e3281b762a198a72a1da38664",
+    "system_prompt_sha256": "b0f3167a2bd40a236a237a366685668fe0928780219dc22ee6db80a7c26832c0",
+    "frozen_evaluation_sha256": "d63498bb841bab8724c62fba17b7f7f6054bd9d1ca330ad42ba7092a807c2183",
+    "deployment_config_sha256": "66887696f8f930de99ee4c033e57ad6c40f878600fc64f12a76f5c691ac21ed4",
+    "llama_cli": "E:\\AI-Agent-Lab\\tools\\llama.cpp\\llama-cli.exe",
+    "llama_cli_sha256": "3ef3e2e59428095f7b8f9ca095147dd9d4630d21781546f3b6390f4cddc7b46d",
+    "llama_server": "E:\\AI-Agent-Lab\\tools\\llama.cpp\\llama-server.exe",
+    "llama_server_sha256": "593ac5de6d8448426f326e1bdecd0ccbcda42bfcfcb7815db69f8c0d658c6cad"
+  },
+  "runtime": {
+    "llama_cli_version": "version: 0.1.2-dev (build 10545, commit a30273376)\nbuilt with Clang 20.1.8 for Windows x86_64",
+    "llama_server_version": "version: 0.1.2-dev (build 10545, commit a30273376)\nbuilt with Clang 20.1.8 for Windows x86_64",
+    "context_size": 2048,
+    "n_predict": 192,
+    "gpu_layers": 99,
+    "temperature": 0.0,
+    "seed": 20260902,
+    "reasoning": "off"
+  },
+  "cold_one_shot": {
+    "timing_boundary": "process start -> process exit; includes model and LoRA load",
+    "metrics": {
+      "request_count": 20,
+      "success_count": 20,
+      "wall_latency_ms_p50": 3536.241,
+      "wall_latency_ms_p95": 4250.109,
+      "wall_latency_ms_mean": 3684.684,
+      "generation_tokens_per_second_p50": 114.7,
+      "generation_tokens_per_second_p95": 115.8,
+      "contract_valid_after_repair_rate": 0.65
+    },
+    "cases": [
+      {
+        "id": "travel-v1.0-evaluation-0001",
+        "expected_action": "tool_call",
+        "exit_code": 0,
+        "wall_latency_ms": 3599.874,
+        "prompt_tokens_per_second": 2554.5,
+        "generation_tokens_per_second": 111.4,
+        "raw_json_valid": true,
+        "raw_contract_valid": false,
+        "raw_contract_error": "tool_call_keys:missing=['arguments']:unknown=[]",
+        "repaired_contract_valid": true,
+        "repaired_contract_error": null,
+        "repair_notes": [
+          "rebuilt_tool_arguments_from_complete_model_request"
+        ],
+        "action_match_after_repair": true,
+        "tool_arguments_match_after_repair": true,
+        "raw_model_json": {
+          "action": "tool_call",
+          "message": "正在查询本地演示目录中的旅行选项。",
+          "request": {
+            "budget_cny": 8500,
+            "days": 5,
+            "departure_city": "苏州",
+            "destination": "西安",
+            "hotel_preference": "高档",
+            "start_date": "2026-08-21",
+            "themes": [
+              "休闲",
+              "海边"
+            ],
+            "traveler_count": 5
+          },
+          "tool_call": {
+            "name": "search_trip_options"
+          }
+        },
+        "repaired_decision": {
+          "action": "tool_call",
+          "request": {
+            "departure_city": "苏州",
+            "destination": "西安",
+            "start_date": "2026-08-21",
+            "days": 5,
+            "traveler_count": 5,
+            "budget_cny": 8500,
+            "themes": [
+              "休闲",
+              "海边"
+            ],
+            "hotel_preference": "高档"
+          },
+          "message": "信息已齐全，正在查询本地演示目录中的旅行选项。",
+          "tool_call": {
+            "name": "search_trip_options",
+            "arguments": {
+              "departure_city": "苏州",
+              "destination": "西安",
+              "start_date": "2026-08-21",
+              "days": 5,
+              "traveler_count": 5,
+              "budget_cny": 8500,
+              "themes": [
+                "休闲",
+                "海边"
+              ],
+              "hotel_preference": "高档"
+            }
+          }
+        },
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从苏州去西安玩5天，明天出发，五个人出行，希望住高档，预算8500元，喜欢休闲和海边。\n{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 8500, \"days\": 5, \"departure_city\": \"苏州\", \"destination\": \"西安\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-08-21\", \"themes\": [\"休闲\", \"海边\"], \"traveler_count\": 5}, \"tool_call\": {\"name\": \"search_trip_options\"}}\n\n[ Prompt: 2554.5 t/s | Generation: 111.4 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": true
+      },
+      {
+        "id": "travel-v1.0-evaluation-0002",
+        "expected_action": "clarify",
+        "exit_code": 0,
+        "wall_latency_ms": 3526.035,
+        "prompt_tokens_per_second": 2955.8,
+        "generation_tokens_per_second": 115.8,
+        "raw_json_valid": true,
+        "raw_contract_valid": true,
+        "raw_contract_error": null,
+        "repaired_contract_valid": true,
+        "repaired_contract_error": null,
+        "repair_notes": [],
+        "action_match_after_repair": true,
+        "tool_arguments_match_after_repair": null,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成行程，请补充：出发城市。",
+          "missing_fields": [
+            "departure_city"
+          ],
+          "request": {
+            "budget_cny": 6800,
+            "days": 3,
+            "departure_city": null,
+            "destination": "厦门",
+            "hotel_preference": "高档",
+            "start_date": "2026-08-21",
+            "themes": [
+              "自然",
+              "休闲"
+            ],
+            "traveler_count": 1
+          }
+        },
+        "repaired_decision": {
+          "action": "clarify",
+          "request": {
+            "departure_city": null,
+            "destination": "厦门",
+            "start_date": "2026-08-21",
+            "days": 3,
+            "traveler_count": 1,
+            "budget_cny": 6800,
+            "themes": [
+              "自然",
+              "休闲"
+            ],
+            "hotel_preference": "高档"
+          },
+          "message": "为了生成旅行方案，请补充：出发城市。",
+          "missing_fields": [
+            "departure_city"
+          ]
+        },
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，明天去厦门玩3天，1个人出行，希望住高档，预算6800元，喜欢自然和休闲。\n{\"action\": \"clarify\", \"message\": \"为了生成行程，请补充：出发城市。\", \"missing_fields\": [\"departure_city\"], \"request\": {\"budget_cny\": 6800, \"days\": 3, \"departure_city\": null, \"destination\": \"厦门\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-08-21\", \"themes\": [\"自然\", \"休闲\"], \"traveler_count\": 1}}\n\n[ Prompt: 2955.8 t/s | Generation: 115.8 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": true
+      },
+      {
+        "id": "travel-v1.0-evaluation-0003",
+        "expected_action": "clarify",
+        "exit_code": 0,
+        "wall_latency_ms": 3436.333,
+        "prompt_tokens_per_second": 3037.7,
+        "generation_tokens_per_second": 115.0,
+        "raw_json_valid": true,
+        "raw_contract_valid": false,
+        "raw_contract_error": "request_keys:missing=['themes', 'traveler_count']:unknown=[]",
+        "repaired_contract_valid": false,
+        "repaired_contract_error": "request_keys:missing=['themes', 'traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "action_match_after_repair": false,
+        "tool_arguments_match_after_repair": null,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成旅行方案，请补充：出行人数。",
+          "missing_fields": [
+            "traveler_count"
+          ],
+          "request": {
+            "budget_cny": 5000,
+            "days": 2,
+            "departure_city": "广州",
+            "destination": "西安",
+            "hotel_preference": "经济型",
+            "start_date": "2026-09-19"
+          }
+        },
+        "repaired_decision": null,
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从广州去西安玩2天，2026年9月19日出发，希望住经济型，预算5000元，喜欢摄影和自然。\n{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 5000, \"days\": 2, \"departure_city\": \"广州\", \"destination\": \"西安\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-09-19\"}}\n\n[ Prompt: 3037.7 t/s | Generation: 115.0 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": false
+      },
+      {
+        "id": "travel-v1.0-evaluation-0004",
+        "expected_action": "tool_call",
+        "exit_code": 0,
+        "wall_latency_ms": 4042.846,
+        "prompt_tokens_per_second": 2839.5,
+        "generation_tokens_per_second": 115.3,
+        "raw_json_valid": true,
+        "raw_contract_valid": true,
+        "raw_contract_error": null,
+        "repaired_contract_valid": true,
+        "repaired_contract_error": null,
+        "repair_notes": [],
+        "action_match_after_repair": true,
+        "tool_arguments_match_after_repair": true,
+        "raw_model_json": {
+          "action": "tool_call",
+          "message": "正在查询本地演示目录中的旅行选项。",
+          "request": {
+            "budget_cny": null,
+            "days": 3,
+            "departure_city": "重庆",
+            "destination": "北京",
+            "hotel_preference": null,
+            "start_date": "2026-11-21",
+            "themes": [],
+            "traveler_count": 1
+          },
+          "tool_call": {
+            "arguments": {
+              "budget_cny": null,
+              "days": 3,
+              "departure_city": "重庆",
+              "destination": "北京",
+              "hotel_preference": null,
+              "start_date": "2026-11-21",
+              "themes": [],
+              "traveler_count": 1
+            },
+            "name": "search_trip_options"
+          }
+        },
+        "repaired_decision": {
+          "action": "tool_call",
+          "request": {
+            "departure_city": "重庆",
+            "destination": "北京",
+            "start_date": "2026-11-21",
+            "days": 3,
+            "traveler_count": 1,
+            "budget_cny": null,
+            "themes": [],
+            "hotel_preference": null
+          },
+          "message": "信息已齐全，正在查询本地演示目录中的旅行选项。",
+          "tool_call": {
+            "name": "search_trip_options",
+            "arguments": {
+              "budget_cny": null,
+              "days": 3,
+              "departure_city": "重庆",
+              "destination": "北京",
+              "hotel_preference": null,
+              "start_date": "2026-11-21",
+              "themes": [],
+              "traveler_count": 1
+            }
+          }
+        },
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从重庆去北京玩3天，11月21日出发，一个人出行。\n{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"重庆\", \"destination\": \"北京\", \"hotel_preference\": null, \"start_date\": \"2026-11-21\", \"themes\": [], \"traveler_count\": 1}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"重庆\", \"destination\": \"北京\", \"hotel_preference\": null, \"start_date\": \"2026-11-21\", \"themes\": [], \"traveler_count\": 1}, \"name\": \"search_trip_options\"}}\n\n[ Prompt: 2839.5 t/s | Generation: 115.3 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": true
+      },
+      {
+        "id": "travel-v1.0-evaluation-0005",
+        "expected_action": "tool_call",
+        "exit_code": 0,
+        "wall_latency_ms": 3584.614,
+        "prompt_tokens_per_second": 2308.0,
+        "generation_tokens_per_second": 112.7,
+        "raw_json_valid": true,
+        "raw_contract_valid": true,
+        "raw_contract_error": null,
+        "repaired_contract_valid": true,
+        "repaired_contract_error": null,
+        "repair_notes": [],
+        "action_match_after_repair": false,
+        "tool_arguments_match_after_repair": false,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成旅行方案，请补充：出行天数。",
+          "missing_fields": [
+            "days"
+          ],
+          "request": {
+            "budget_cny": 8500,
+            "days": null,
+            "departure_city": "重庆",
+            "destination": "杭州",
+            "hotel_preference": "经济型",
+            "start_date": "2026-10-03",
+            "themes": [
+              "美食"
+            ],
+            "traveler_count": 3
+          }
+        },
+        "repaired_decision": {
+          "action": "clarify",
+          "request": {
+            "departure_city": "重庆",
+            "destination": "杭州",
+            "start_date": "2026-10-03",
+            "days": null,
+            "traveler_count": 3,
+            "budget_cny": 8500,
+            "themes": [
+              "美食"
+            ],
+            "hotel_preference": "经济型"
+          },
+          "message": "为了生成旅行方案，请补充：旅行天数。",
+          "missing_fields": [
+            "days"
+          ]
+        },
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从重庆去杭州玩4天，10月3日出发，3个人出行，希望住经济型，预算8500元，喜欢美食。\n{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 8500, \"days\": null, \"departure_city\": \"重庆\", \"destination\": \"杭州\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-03\", \"themes\": [\"美食\"], \"traveler_count\": 3}}\n\n[ Prompt: 2308.0 t/s | Generation: 112.7 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": true
+      },
+      {
+        "id": "travel-v1.0-evaluation-0006",
+        "expected_action": "clarify",
+        "exit_code": 0,
+        "wall_latency_ms": 3502.813,
+        "prompt_tokens_per_second": 2219.4,
+        "generation_tokens_per_second": 114.6,
+        "raw_json_valid": true,
+        "raw_contract_valid": true,
+        "raw_contract_error": null,
+        "repaired_contract_valid": true,
+        "repaired_contract_error": null,
+        "repair_notes": [],
+        "action_match_after_repair": true,
+        "tool_arguments_match_after_repair": null,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成旅行方案，请补充：出发日期。",
+          "missing_fields": [
+            "start_date"
+          ],
+          "request": {
+            "budget_cny": 3200,
+            "days": 2,
+            "departure_city": "南京",
+            "destination": "北京",
+            "hotel_preference": "经济型",
+            "start_date": null,
+            "themes": [
+              "摄影",
+              "海边"
+            ],
+            "traveler_count": 4
+          }
+        },
+        "repaired_decision": {
+          "action": "clarify",
+          "request": {
+            "departure_city": "南京",
+            "destination": "北京",
+            "start_date": null,
+            "days": 2,
+            "traveler_count": 4,
+            "budget_cny": 3200,
+            "themes": [
+              "摄影",
+              "海边"
+            ],
+            "hotel_preference": "经济型"
+          },
+          "message": "为了生成旅行方案，请补充：出发日期。",
+          "missing_fields": [
+            "start_date"
+          ]
+        },
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从南京去北京玩两天，4个人出行，希望住经济型，预算3200元，喜欢摄影和海边。\n{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 3200, \"days\": 2, \"departure_city\": \"南京\", \"destination\": \"北京\", \"hotel_preference\": \"经济型\", \"start_date\": null, \"themes\": [\"摄影\", \"海边\"], \"traveler_count\": 4}}\n\n[ Prompt: 2219.4 t/s | Generation: 114.6 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": true
+      },
+      {
+        "id": "travel-v1.0-evaluation-0007",
+        "expected_action": "clarify",
+        "exit_code": 0,
+        "wall_latency_ms": 3543.838,
+        "prompt_tokens_per_second": 2992.4,
+        "generation_tokens_per_second": 114.9,
+        "raw_json_valid": true,
+        "raw_contract_valid": true,
+        "raw_contract_error": null,
+        "repaired_contract_valid": true,
+        "repaired_contract_error": null,
+        "repair_notes": [],
+        "action_match_after_repair": true,
+        "tool_arguments_match_after_repair": null,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成旅行方案，请补充：旅行天数。",
+          "missing_fields": [
+            "days"
+          ],
+          "request": {
+            "budget_cny": 6800,
+            "days": null,
+            "departure_city": "深圳",
+            "destination": "北京",
+            "hotel_preference": "靠近地铁",
+            "start_date": "2026-10-01",
+            "themes": [
+              "摄影",
+              "自然"
+            ],
+            "traveler_count": 3
+          }
+        },
+        "repaired_decision": {
+          "action": "clarify",
+          "request": {
+            "departure_city": "深圳",
+            "destination": "北京",
+            "start_date": "2026-10-01",
+            "days": null,
+            "traveler_count": 3,
+            "budget_cny": 6800,
+            "themes": [
+              "摄影",
+              "自然"
+            ],
+            "hotel_preference": "靠近地铁"
+          },
+          "message": "为了生成旅行方案，请补充：旅行天数。",
+          "missing_fields": [
+            "days"
+          ]
+        },
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从深圳去北京，10月1日出发，3个人出行，希望住靠近地铁，预算6800元，喜欢摄影和自然。\n{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 6800, \"days\": null, \"departure_city\": \"深圳\", \"destination\": \"北京\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-01\", \"themes\": [\"摄影\", \"自然\"], \"traveler_count\": 3}}\n\n[ Prompt: 2992.4 t/s | Generation: 114.9 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": true
+      },
+      {
+        "id": "travel-v1.0-evaluation-0008",
+        "expected_action": "tool_call",
+        "exit_code": 0,
+        "wall_latency_ms": 3548.575,
+        "prompt_tokens_per_second": 2266.8,
+        "generation_tokens_per_second": 112.2,
+        "raw_json_valid": true,
+        "raw_contract_valid": false,
+        "raw_contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repaired_contract_valid": false,
+        "repaired_contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "action_match_after_repair": false,
+        "tool_arguments_match_after_repair": false,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成旅行方案，请补充：出行人数。",
+          "missing_fields": [
+            "traveler_count"
+          ],
+          "request": {
+            "budget_cny": 3200,
+            "days": 2,
+            "departure_city": "武汉",
+            "destination": "杭州",
+            "hotel_preference": "高档",
+            "start_date": "2026-08-22",
+            "themes": [
+              "摄影"
+            ]
+          }
+        },
+        "repaired_decision": null,
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从武汉去杭州玩2天，后天出发，两个人出行，希望住高档，预算3200元，喜欢摄影。\n{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 3200, \"days\": 2, \"departure_city\": \"武汉\", \"destination\": \"杭州\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-08-22\", \"themes\": [\"摄影\"]}}\n\n[ Prompt: 2266.8 t/s | Generation: 112.2 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": false
+      },
+      {
+        "id": "travel-v1.0-evaluation-0009",
+        "expected_action": "clarify",
+        "exit_code": 0,
+        "wall_latency_ms": 3536.241,
+        "prompt_tokens_per_second": 2519.7,
+        "generation_tokens_per_second": 114.7,
+        "raw_json_valid": true,
+        "raw_contract_valid": true,
+        "raw_contract_error": null,
+        "repaired_contract_valid": true,
+        "repaired_contract_error": null,
+        "repair_notes": [],
+        "action_match_after_repair": true,
+        "tool_arguments_match_after_repair": null,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成旅行方案，请补充：出发日期。",
+          "missing_fields": [
+            "start_date"
+          ],
+          "request": {
+            "budget_cny": 6800,
+            "days": 3,
+            "departure_city": "长沙",
+            "destination": "杭州",
+            "hotel_preference": "靠近地铁",
+            "start_date": null,
+            "themes": [
+              "人文",
+              "海边"
+            ],
+            "traveler_count": 4
+          }
+        },
+        "repaired_decision": {
+          "action": "clarify",
+          "request": {
+            "departure_city": "长沙",
+            "destination": "杭州",
+            "start_date": null,
+            "days": 3,
+            "traveler_count": 4,
+            "budget_cny": 6800,
+            "themes": [
+              "人文",
+              "海边"
+            ],
+            "hotel_preference": "靠近地铁"
+          },
+          "message": "为了生成旅行方案，请补充：出发日期。",
+          "missing_fields": [
+            "start_date"
+          ]
+        },
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从长沙去杭州玩3天，四个人出行，希望住靠近地铁，预算6800元，喜欢人文和海边。\n{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 6800, \"days\": 3, \"departure_city\": \"长沙\", \"destination\": \"杭州\", \"hotel_preference\": \"靠近地铁\", \"start_date\": null, \"themes\": [\"人文\", \"海边\"], \"traveler_count\": 4}}\n\n[ Prompt: 2519.7 t/s | Generation: 114.7 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": true
+      },
+      {
+        "id": "travel-v1.0-evaluation-0010",
+        "expected_action": "clarify",
+        "exit_code": 0,
+        "wall_latency_ms": 3507.95,
+        "prompt_tokens_per_second": 2999.3,
+        "generation_tokens_per_second": 114.7,
+        "raw_json_valid": true,
+        "raw_contract_valid": false,
+        "raw_contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repaired_contract_valid": false,
+        "repaired_contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "action_match_after_repair": false,
+        "tool_arguments_match_after_repair": null,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成旅行方案，请补充：出行人数。",
+          "missing_fields": [
+            "traveler_count"
+          ],
+          "request": {
+            "budget_cny": 4200,
+            "days": 4,
+            "departure_city": "上海",
+            "destination": "西安",
+            "hotel_preference": "高档",
+            "start_date": "2026-10-01",
+            "themes": [
+              "海边",
+              "摄影"
+            ]
+          }
+        },
+        "repaired_decision": null,
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从上海去西安玩4天，2026年10月1日出发，希望住高档，预算4200元，喜欢海边和摄影。\n{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 4200, \"days\": 4, \"departure_city\": \"上海\", \"destination\": \"西安\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-10-01\", \"themes\": [\"海边\", \"摄影\"]}}\n\n[ Prompt: 2999.3 t/s | Generation: 114.7 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": false
+      },
+      {
+        "id": "travel-v1.0-evaluation-0011",
+        "expected_action": "tool_call",
+        "exit_code": 0,
+        "wall_latency_ms": 4276.882,
+        "prompt_tokens_per_second": 2337.9,
+        "generation_tokens_per_second": 113.0,
+        "raw_json_valid": true,
+        "raw_contract_valid": true,
+        "raw_contract_error": null,
+        "repaired_contract_valid": true,
+        "repaired_contract_error": null,
+        "repair_notes": [],
+        "action_match_after_repair": true,
+        "tool_arguments_match_after_repair": true,
+        "raw_model_json": {
+          "action": "tool_call",
+          "message": "正在查询本地演示目录中的旅行选项。",
+          "request": {
+            "budget_cny": 4200,
+            "days": 3,
+            "departure_city": "苏州",
+            "destination": "西安",
+            "hotel_preference": "经济型",
+            "start_date": "2026-08-22",
+            "themes": [
+              "摄影",
+              "休闲"
+            ],
+            "traveler_count": 5
+          },
+          "tool_call": {
+            "arguments": {
+              "budget_cny": 4200,
+              "days": 3,
+              "departure_city": "苏州",
+              "destination": "西安",
+              "hotel_preference": "经济型",
+              "start_date": "2026-08-22",
+              "themes": [
+                "摄影",
+                "休闲"
+              ],
+              "traveler_count": 5
+            },
+            "name": "search_trip_options"
+          }
+        },
+        "repaired_decision": {
+          "action": "tool_call",
+          "request": {
+            "departure_city": "苏州",
+            "destination": "西安",
+            "start_date": "2026-08-22",
+            "days": 3,
+            "traveler_count": 5,
+            "budget_cny": 4200,
+            "themes": [
+              "摄影",
+              "休闲"
+            ],
+            "hotel_preference": "经济型"
+          },
+          "message": "信息已齐全，正在查询本地演示目录中的旅行选项。",
+          "tool_call": {
+            "name": "search_trip_options",
+            "arguments": {
+              "budget_cny": 4200,
+              "days": 3,
+              "departure_city": "苏州",
+              "destination": "西安",
+              "hotel_preference": "经济型",
+              "start_date": "2026-08-22",
+              "themes": [
+                "摄影",
+                "休闲"
+              ],
+              "traveler_count": 5
+            }
+          }
+        },
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从苏州去西安玩三天，后天出发，5个人出行，希望住经济型，预算4200元，喜欢摄影和休闲。\n{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 4200, \"days\": 3, \"departure_city\": \"苏州\", \"destination\": \"西安\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-22\", \"themes\": [\"摄影\", \"休闲\"], \"traveler_count\": 5}, \"tool_call\": {\"arguments\": {\"budget_cny\": 4200, \"days\": 3, \"departure_city\": \"苏州\", \"destination\": \"西安\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-22\", \"themes\": [\"摄影\", \"休闲\"], \"traveler_count\": 5}, \"name\": \"search_trip_options\"}}\n\n[ Prompt: 2337.9 t/s | Generation: 113.0 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": true
+      },
+      {
+        "id": "travel-v1.0-evaluation-0012",
+        "expected_action": "tool_call",
+        "exit_code": 0,
+        "wall_latency_ms": 4250.109,
+        "prompt_tokens_per_second": 3019.5,
+        "generation_tokens_per_second": 115.3,
+        "raw_json_valid": true,
+        "raw_contract_valid": true,
+        "raw_contract_error": null,
+        "repaired_contract_valid": true,
+        "repaired_contract_error": null,
+        "repair_notes": [],
+        "action_match_after_repair": true,
+        "tool_arguments_match_after_repair": true,
+        "raw_model_json": {
+          "action": "tool_call",
+          "message": "正在查询本地演示目录中的旅行选项。",
+          "request": {
+            "budget_cny": 4200,
+            "days": 2,
+            "departure_city": "南京",
+            "destination": "成都",
+            "hotel_preference": "靠近地铁",
+            "start_date": "2026-10-03",
+            "themes": [
+              "休闲",
+              "海边"
+            ],
+            "traveler_count": 5
+          },
+          "tool_call": {
+            "arguments": {
+              "budget_cny": 4200,
+              "days": 2,
+              "departure_city": "南京",
+              "destination": "成都",
+              "hotel_preference": "靠近地铁",
+              "start_date": "2026-10-03",
+              "themes": [
+                "休闲",
+                "海边"
+              ],
+              "traveler_count": 5
+            },
+            "name": "search_trip_options"
+          }
+        },
+        "repaired_decision": {
+          "action": "tool_call",
+          "request": {
+            "departure_city": "南京",
+            "destination": "成都",
+            "start_date": "2026-10-03",
+            "days": 2,
+            "traveler_count": 5,
+            "budget_cny": 4200,
+            "themes": [
+              "休闲",
+              "海边"
+            ],
+            "hotel_preference": "靠近地铁"
+          },
+          "message": "信息已齐全，正在查询本地演示目录中的旅行选项。",
+          "tool_call": {
+            "name": "search_trip_options",
+            "arguments": {
+              "budget_cny": 4200,
+              "days": 2,
+              "departure_city": "南京",
+              "destination": "成都",
+              "hotel_preference": "靠近地铁",
+              "start_date": "2026-10-03",
+              "themes": [
+                "休闲",
+                "海边"
+              ],
+              "traveler_count": 5
+            }
+          }
+        },
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从南京去成都玩两天，2026年10月3日出发，5个人出行，希望住靠近地铁，预算4200元，喜欢休闲和海边。\n{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 4200, \"days\": 2, \"departure_city\": \"南京\", \"destination\": \"成都\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-03\", \"themes\": [\"休闲\", \"海边\"], \"traveler_count\": 5}, \"tool_call\": {\"arguments\": {\"budget_cny\": 4200, \"days\": 2, \"departure_city\": \"南京\", \"destination\": \"成都\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-03\", \"themes\": [\"休闲\", \"海边\"], \"traveler_count\": 5}, \"name\": \"search_trip_options\"}}\n\n[ Prompt: 3019.5 t/s | Generation: 115.3 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": true
+      },
+      {
+        "id": "travel-v1.0-evaluation-0013",
+        "expected_action": "clarify",
+        "exit_code": 0,
+        "wall_latency_ms": 3387.264,
+        "prompt_tokens_per_second": 2958.9,
+        "generation_tokens_per_second": 115.1,
+        "raw_json_valid": true,
+        "raw_contract_valid": false,
+        "raw_contract_error": "request_keys:missing=['themes', 'traveler_count']:unknown=[]",
+        "repaired_contract_valid": false,
+        "repaired_contract_error": "request_keys:missing=['themes', 'traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "action_match_after_repair": false,
+        "tool_arguments_match_after_repair": null,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成旅行方案，请补充：目的地。",
+          "missing_fields": [
+            "destination"
+          ],
+          "request": {
+            "budget_cny": 6800,
+            "days": 4,
+            "departure_city": "广州",
+            "destination": null,
+            "hotel_preference": "高档",
+            "start_date": "2026-09-19"
+          }
+        },
+        "repaired_decision": null,
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从广州出发，9月19日旅行四天，3个人出行，希望住高档，预算6800元，喜欢摄影。\n{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：目的地。\", \"missing_fields\": [\"destination\"], \"request\": {\"budget_cny\": 6800, \"days\": 4, \"departure_city\": \"广州\", \"destination\": null, \"hotel_preference\": \"高档\", \"start_date\": \"2026-09-19\"}}\n\n[ Prompt: 2958.9 t/s | Generation: 115.1 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": false
+      },
+      {
+        "id": "travel-v1.0-evaluation-0014",
+        "expected_action": "tool_call",
+        "exit_code": 0,
+        "wall_latency_ms": 3512.517,
+        "prompt_tokens_per_second": 3084.4,
+        "generation_tokens_per_second": 115.1,
+        "raw_json_valid": true,
+        "raw_contract_valid": false,
+        "raw_contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repaired_contract_valid": false,
+        "repaired_contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "action_match_after_repair": false,
+        "tool_arguments_match_after_repair": false,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成旅行方案，请补充：出行人数。",
+          "missing_fields": [
+            "traveler_count"
+          ],
+          "request": {
+            "budget_cny": 6800,
+            "days": 5,
+            "departure_city": "武汉",
+            "destination": "北京",
+            "hotel_preference": "经济型",
+            "start_date": "2026-10-03",
+            "themes": [
+              "海边"
+            ]
+          }
+        },
+        "repaired_decision": null,
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从武汉去北京玩五天，2026年10月3日出发，1个人出行，希望住经济型，预算6800元，喜欢海边。\n{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 6800, \"days\": 5, \"departure_city\": \"武汉\", \"destination\": \"北京\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-03\", \"themes\": [\"海边\"]}}\n\n[ Prompt: 3084.4 t/s | Generation: 115.1 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": false
+      },
+      {
+        "id": "travel-v1.0-evaluation-0015",
+        "expected_action": "clarify",
+        "exit_code": 0,
+        "wall_latency_ms": 3527.649,
+        "prompt_tokens_per_second": 2845.6,
+        "generation_tokens_per_second": 115.8,
+        "raw_json_valid": true,
+        "raw_contract_valid": false,
+        "raw_contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repaired_contract_valid": false,
+        "repaired_contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "action_match_after_repair": false,
+        "tool_arguments_match_after_repair": null,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成旅行方案，请补充：出行人数。",
+          "missing_fields": [
+            "traveler_count"
+          ],
+          "request": {
+            "budget_cny": 8500,
+            "days": 2,
+            "departure_city": "广州",
+            "destination": "成都",
+            "hotel_preference": "靠近地铁",
+            "start_date": "2026-08-22",
+            "themes": [
+              "自然",
+              "休闲"
+            ]
+          }
+        },
+        "repaired_decision": null,
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从广州去成都玩2天，后天出发，希望住靠近地铁，预算8500元，喜欢自然和休闲。\n{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 8500, \"days\": 2, \"departure_city\": \"广州\", \"destination\": \"成都\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-08-22\", \"themes\": [\"自然\", \"休闲\"]}}\n\n[ Prompt: 2845.6 t/s | Generation: 115.8 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": false
+      },
+      {
+        "id": "travel-v1.0-evaluation-0016",
+        "expected_action": "tool_call",
+        "exit_code": 0,
+        "wall_latency_ms": 4239.856,
+        "prompt_tokens_per_second": 2363.9,
+        "generation_tokens_per_second": 114.5,
+        "raw_json_valid": true,
+        "raw_contract_valid": true,
+        "raw_contract_error": null,
+        "repaired_contract_valid": true,
+        "repaired_contract_error": null,
+        "repair_notes": [],
+        "action_match_after_repair": true,
+        "tool_arguments_match_after_repair": true,
+        "raw_model_json": {
+          "action": "tool_call",
+          "message": "正在查询本地演示目录中的旅行选项。",
+          "request": {
+            "budget_cny": 3200,
+            "days": 5,
+            "departure_city": "武汉",
+            "destination": "杭州",
+            "hotel_preference": "经济型",
+            "start_date": "2026-10-01",
+            "themes": [
+              "休闲",
+              "海边"
+            ],
+            "traveler_count": 2
+          },
+          "tool_call": {
+            "arguments": {
+              "budget_cny": 3200,
+              "days": 5,
+              "departure_city": "武汉",
+              "destination": "杭州",
+              "hotel_preference": "经济型",
+              "start_date": "2026-10-01",
+              "themes": [
+                "休闲",
+                "海边"
+              ],
+              "traveler_count": 2
+            },
+            "name": "search_trip_options"
+          }
+        },
+        "repaired_decision": {
+          "action": "tool_call",
+          "request": {
+            "departure_city": "武汉",
+            "destination": "杭州",
+            "start_date": "2026-10-01",
+            "days": 5,
+            "traveler_count": 2,
+            "budget_cny": 3200,
+            "themes": [
+              "休闲",
+              "海边"
+            ],
+            "hotel_preference": "经济型"
+          },
+          "message": "信息已齐全，正在查询本地演示目录中的旅行选项。",
+          "tool_call": {
+            "name": "search_trip_options",
+            "arguments": {
+              "budget_cny": 3200,
+              "days": 5,
+              "departure_city": "武汉",
+              "destination": "杭州",
+              "hotel_preference": "经济型",
+              "start_date": "2026-10-01",
+              "themes": [
+                "休闲",
+                "海边"
+              ],
+              "traveler_count": 2
+            }
+          }
+        },
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从武汉去杭州玩5天，2026年10月1日出发，2个人出行，希望住经济型，预算3200元，喜欢休闲和海边。\n{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 3200, \"days\": 5, \"departure_city\": \"武汉\", \"destination\": \"杭州\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-01\", \"themes\": [\"休闲\", \"海边\"], \"traveler_count\": 2}, \"tool_call\": {\"arguments\": {\"budget_cny\": 3200, \"days\": 5, \"departure_city\": \"武汉\", \"destination\": \"杭州\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-01\", \"themes\": [\"休闲\", \"海边\"], \"traveler_count\": 2}, \"name\": \"search_trip_options\"}}\n\n[ Prompt: 2363.9 t/s | Generation: 114.5 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": true
+      },
+      {
+        "id": "travel-v1.0-evaluation-0017",
+        "expected_action": "clarify",
+        "exit_code": 0,
+        "wall_latency_ms": 3584.905,
+        "prompt_tokens_per_second": 2254.0,
+        "generation_tokens_per_second": 113.1,
+        "raw_json_valid": true,
+        "raw_contract_valid": true,
+        "raw_contract_error": null,
+        "repaired_contract_valid": true,
+        "repaired_contract_error": null,
+        "repair_notes": [],
+        "action_match_after_repair": true,
+        "tool_arguments_match_after_repair": null,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成旅行方案，请补充：旅行天数。",
+          "missing_fields": [
+            "days"
+          ],
+          "request": {
+            "budget_cny": 3200,
+            "days": null,
+            "departure_city": "广州",
+            "destination": "北京",
+            "hotel_preference": "靠近地铁",
+            "start_date": "2026-08-21",
+            "themes": [
+              "休闲",
+              "美食"
+            ],
+            "traveler_count": 4
+          }
+        },
+        "repaired_decision": {
+          "action": "clarify",
+          "request": {
+            "departure_city": "广州",
+            "destination": "北京",
+            "start_date": "2026-08-21",
+            "days": null,
+            "traveler_count": 4,
+            "budget_cny": 3200,
+            "themes": [
+              "休闲",
+              "美食"
+            ],
+            "hotel_preference": "靠近地铁"
+          },
+          "message": "为了生成旅行方案，请补充：旅行天数。",
+          "missing_fields": [
+            "days"
+          ]
+        },
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从广州去北京，明天出发，4个人出行，希望住靠近地铁，预算3200元，喜欢休闲和美食。\n{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 3200, \"days\": null, \"departure_city\": \"广州\", \"destination\": \"北京\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-08-21\", \"themes\": [\"休闲\", \"美食\"], \"traveler_count\": 4}}\n\n[ Prompt: 2254.0 t/s | Generation: 113.1 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": true
+      },
+      {
+        "id": "travel-v1.0-evaluation-0018",
+        "expected_action": "clarify",
+        "exit_code": 0,
+        "wall_latency_ms": 3380.905,
+        "prompt_tokens_per_second": 2262.8,
+        "generation_tokens_per_second": 115.2,
+        "raw_json_valid": true,
+        "raw_contract_valid": true,
+        "raw_contract_error": null,
+        "repaired_contract_valid": true,
+        "repaired_contract_error": null,
+        "repair_notes": [],
+        "action_match_after_repair": true,
+        "tool_arguments_match_after_repair": null,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成旅行方案，请补充：旅行天数。",
+          "missing_fields": [
+            "days"
+          ],
+          "request": {
+            "budget_cny": 8500,
+            "days": null,
+            "departure_city": "上海",
+            "destination": "杭州",
+            "hotel_preference": "高档",
+            "start_date": "2026-08-22",
+            "themes": [
+              "摄影",
+              "海边"
+            ],
+            "traveler_count": 3
+          }
+        },
+        "repaired_decision": {
+          "action": "clarify",
+          "request": {
+            "departure_city": "上海",
+            "destination": "杭州",
+            "start_date": "2026-08-22",
+            "days": null,
+            "traveler_count": 3,
+            "budget_cny": 8500,
+            "themes": [
+              "摄影",
+              "海边"
+            ],
+            "hotel_preference": "高档"
+          },
+          "message": "为了生成旅行方案，请补充：旅行天数。",
+          "missing_fields": [
+            "days"
+          ]
+        },
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从上海去杭州，后天出发，三个人出行，希望住高档，预算8500元，喜欢摄影和海边。\n{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 8500, \"days\": null, \"departure_city\": \"上海\", \"destination\": \"杭州\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-08-22\", \"themes\": [\"摄影\", \"海边\"], \"traveler_count\": 3}}\n\n[ Prompt: 2262.8 t/s | Generation: 115.2 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": true
+      },
+      {
+        "id": "travel-v1.0-evaluation-0019",
+        "expected_action": "clarify",
+        "exit_code": 0,
+        "wall_latency_ms": 3503.371,
+        "prompt_tokens_per_second": 2952.5,
+        "generation_tokens_per_second": 113.2,
+        "raw_json_valid": true,
+        "raw_contract_valid": false,
+        "raw_contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repaired_contract_valid": false,
+        "repaired_contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "action_match_after_repair": false,
+        "tool_arguments_match_after_repair": null,
+        "raw_model_json": {
+          "action": "clarify",
+          "message": "为了生成旅行方案，请补充：出行人数。",
+          "missing_fields": [
+            "traveler_count"
+          ],
+          "request": {
+            "budget_cny": 8500,
+            "days": 5,
+            "departure_city": "南京",
+            "destination": "成都",
+            "hotel_preference": "市中心",
+            "start_date": "2026-09-07",
+            "themes": [
+              "海边",
+              "摄影"
+            ]
+          }
+        },
+        "repaired_decision": null,
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从南京去成都玩5天，9月7日出发，希望住市中心，预算8500元，喜欢海边和摄影。\n{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 8500, \"days\": 5, \"departure_city\": \"南京\", \"destination\": \"成都\", \"hotel_preference\": \"市中心\", \"start_date\": \"2026-09-07\", \"themes\": [\"海边\", \"摄影\"]}}\n\n[ Prompt: 2952.5 t/s | Generation: 113.2 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": false
+      },
+      {
+        "id": "travel-v1.0-evaluation-0020",
+        "expected_action": "tool_call",
+        "exit_code": 0,
+        "wall_latency_ms": 4201.111,
+        "prompt_tokens_per_second": 3051.2,
+        "generation_tokens_per_second": 114.9,
+        "raw_json_valid": true,
+        "raw_contract_valid": true,
+        "raw_contract_error": null,
+        "repaired_contract_valid": true,
+        "repaired_contract_error": null,
+        "repair_notes": [],
+        "action_match_after_repair": true,
+        "tool_arguments_match_after_repair": true,
+        "raw_model_json": {
+          "action": "tool_call",
+          "message": "正在查询本地演示目录中的旅行选项。",
+          "request": {
+            "budget_cny": 10000,
+            "days": 3,
+            "departure_city": "长沙",
+            "destination": "杭州",
+            "hotel_preference": "靠近地铁",
+            "start_date": "2026-09-19",
+            "themes": [
+              "自然"
+            ],
+            "traveler_count": 5
+          },
+          "tool_call": {
+            "arguments": {
+              "budget_cny": 10000,
+              "days": 3,
+              "departure_city": "长沙",
+              "destination": "杭州",
+              "hotel_preference": "靠近地铁",
+              "start_date": "2026-09-19",
+              "themes": [
+                "自然"
+              ],
+              "traveler_count": 5
+            },
+            "name": "search_trip_options"
+          }
+        },
+        "repaired_decision": {
+          "action": "tool_call",
+          "request": {
+            "departure_city": "长沙",
+            "destination": "杭州",
+            "start_date": "2026-09-19",
+            "days": 3,
+            "traveler_count": 5,
+            "budget_cny": 10000,
+            "themes": [
+              "自然"
+            ],
+            "hotel_preference": "靠近地铁"
+          },
+          "message": "信息已齐全，正在查询本地演示目录中的旅行选项。",
+          "tool_call": {
+            "name": "search_trip_options",
+            "arguments": {
+              "budget_cny": 10000,
+              "days": 3,
+              "departure_city": "长沙",
+              "destination": "杭州",
+              "hotel_preference": "靠近地铁",
+              "start_date": "2026-09-19",
+              "themes": [
+                "自然"
+              ],
+              "traveler_count": 5
+            }
+          }
+        },
+        "raw_cli_stdout": "\n\nLoading model... \n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10545-a30273376\nmodel      : E:\\AI-Agent-Lab\\projects\\travel-itinerary-assistant\\models\\gguf\\qwen3-1.7b-base-q4-k-m.gguf\nftype      : Q4_K - Medium\nmodalities : text\nusing custom system prompt\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n\n> 当前日期：2026-08-20\n用户请求：请规划行程，从长沙去杭州玩三天，2026年9月19日出发，5个人出行，希望住靠近地铁，预算10000元，喜欢自然。\n{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 10000, \"days\": 3, \"departure_city\": \"长沙\", \"destination\": \"杭州\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-09-19\", \"themes\": [\"自然\"], \"traveler_count\": 5}, \"tool_call\": {\"arguments\": {\"budget_cny\": 10000, \"days\": 3, \"departure_city\": \"长沙\", \"destination\": \"杭州\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-09-19\", \"themes\": [\"自然\"], \"traveler_count\": 5}, \"name\": \"search_trip_options\"}}\n\n[ Prompt: 3051.2 t/s | Generation: 114.9 t/s ]\n\n\nExiting...\n",
+        "raw_cli_stderr": "",
+        "success": true,
+        "contract_valid_after_repair": true
+      }
+    ]
+  },
+  "warm_resident": {
+    "timing_boundary": "HTTP POST -> complete response body; sequential requests",
+    "server_startup_ms": 2174.407,
+    "warmup_request_count": 3,
+    "warmup_results": [
+      {
+        "id": "travel-v1.0-evaluation-0001",
+        "success": true,
+        "wall_latency_ms": 1010.861,
+        "completion_tokens": 107,
+        "generation_tokens_per_second": 114.69800879928498,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [
+          "rebuilt_tool_arguments_from_complete_model_request"
+        ],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 8500, \"days\": 5, \"departure_city\": \"苏州\", \"destination\": \"西安\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-08-21\", \"themes\": [\"休闲\", \"海边\"], \"traveler_count\": 5}, \"tool_call\": {\"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0002",
+        "success": true,
+        "wall_latency_ms": 2165.028,
+        "completion_tokens": 102,
+        "generation_tokens_per_second": 113.09227882061548,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成行程，请补充：出发城市。\", \"missing_fields\": [\"departure_city\"], \"request\": {\"budget_cny\": 6800, \"days\": 3, \"departure_city\": null, \"destination\": \"厦门\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-08-21\", \"themes\": [\"自然\", \"休闲\"], \"traveler_count\": 1}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0003",
+        "success": true,
+        "wall_latency_ms": 835.048,
+        "completion_tokens": 89,
+        "generation_tokens_per_second": 113.377662281442,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['themes', 'traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 5000, \"days\": 2, \"departure_city\": \"广州\", \"destination\": \"西安\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-09-19\"}}"
+      }
+    ],
+    "metrics": {
+      "request_count": 100,
+      "success_count": 100,
+      "wall_latency_ms_p50": 975.186,
+      "wall_latency_ms_p95": 1706.123,
+      "wall_latency_ms_mean": 1153.494,
+      "generation_tokens_per_second_p50": 109.523,
+      "generation_tokens_per_second_p95": 113.728,
+      "contract_valid_after_repair_rate": 0.84
+    },
+    "cases": [
+      {
+        "id": "travel-v1.0-evaluation-0004",
+        "success": true,
+        "wall_latency_ms": 1437.243,
+        "completion_tokens": 160,
+        "generation_tokens_per_second": 113.91618777686472,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"重庆\", \"destination\": \"北京\", \"hotel_preference\": null, \"start_date\": \"2026-11-21\", \"themes\": [], \"traveler_count\": 1}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"重庆\", \"destination\": \"北京\", \"hotel_preference\": null, \"start_date\": \"2026-11-21\", \"themes\": [], \"traveler_count\": 1}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0005",
+        "success": true,
+        "wall_latency_ms": 940.361,
+        "completion_tokens": 101,
+        "generation_tokens_per_second": 114.29877700308606,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 8500, \"days\": null, \"departure_city\": \"重庆\", \"destination\": \"杭州\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-03\", \"themes\": [\"美食\"], \"traveler_count\": 3}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0006",
+        "success": true,
+        "wall_latency_ms": 881.319,
+        "completion_tokens": 95,
+        "generation_tokens_per_second": 113.91592035580548,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 3200, \"days\": 2, \"departure_city\": \"南京\", \"destination\": \"北京\", \"hotel_preference\": \"经济型\", \"start_date\": null, \"themes\": [\"摄影\", \"海边\"], \"traveler_count\": 4}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0007",
+        "success": true,
+        "wall_latency_ms": 942.031,
+        "completion_tokens": 104,
+        "generation_tokens_per_second": 113.76476318704806,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 6800, \"days\": null, \"departure_city\": \"深圳\", \"destination\": \"北京\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-01\", \"themes\": [\"摄影\", \"自然\"], \"traveler_count\": 3}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0008",
+        "success": true,
+        "wall_latency_ms": 922.034,
+        "completion_tokens": 101,
+        "generation_tokens_per_second": 114.24967667341501,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 3200, \"days\": 2, \"departure_city\": \"武汉\", \"destination\": \"杭州\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-08-22\", \"themes\": [\"摄影\"], \"traveler_count\": null}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0009",
+        "success": true,
+        "wall_latency_ms": 880.833,
+        "completion_tokens": 95,
+        "generation_tokens_per_second": 113.55948584130667,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 6800, \"days\": 3, \"departure_city\": \"长沙\", \"destination\": \"杭州\", \"hotel_preference\": \"靠近地铁\", \"start_date\": null, \"themes\": [\"人文\", \"海边\"], \"traveler_count\": 4}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0010",
+        "success": true,
+        "wall_latency_ms": 909.434,
+        "completion_tokens": 98,
+        "generation_tokens_per_second": 113.44962894953832,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 4200, \"days\": 4, \"departure_city\": \"上海\", \"destination\": \"西安\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-10-01\", \"themes\": [\"海边\", \"摄影\"]}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0011",
+        "success": true,
+        "wall_latency_ms": 1635.186,
+        "completion_tokens": 182,
+        "generation_tokens_per_second": 113.72768565416354,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 4200, \"days\": 3, \"departure_city\": \"苏州\", \"destination\": \"西安\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-22\", \"themes\": [\"摄影\", \"休闲\"], \"traveler_count\": 5}, \"tool_call\": {\"arguments\": {\"budget_cny\": 4200, \"days\": 3, \"departure_city\": \"苏州\", \"destination\": \"西安\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-22\", \"themes\": [\"摄影\", \"休闲\"], \"traveler_count\": 5}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0012",
+        "success": true,
+        "wall_latency_ms": 1029.265,
+        "completion_tokens": 108,
+        "generation_tokens_per_second": 112.12747741469668,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [
+          "rebuilt_tool_arguments_from_complete_model_request"
+        ],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 4200, \"days\": 2, \"departure_city\": \"南京\", \"destination\": \"成都\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-03\", \"themes\": [\"休闲\", \"海边\"], \"traveler_count\": 5}, \"tool_call\": {\"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0013",
+        "success": true,
+        "wall_latency_ms": 805.899,
+        "completion_tokens": 84,
+        "generation_tokens_per_second": 109.23769200498545,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['themes', 'traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：目的地。\", \"missing_fields\": [\"destination\"], \"request\": {\"budget_cny\": 6800, \"days\": 4, \"departure_city\": \"广州\", \"destination\": null, \"hotel_preference\": \"高档\", \"start_date\": \"2026-09-19\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0014",
+        "success": true,
+        "wall_latency_ms": 900.363,
+        "completion_tokens": 96,
+        "generation_tokens_per_second": 111.15037124223996,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 6800, \"days\": 5, \"departure_city\": \"武汉\", \"destination\": \"北京\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-03\", \"themes\": [\"海边\"]}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0015",
+        "success": true,
+        "wall_latency_ms": 908.661,
+        "completion_tokens": 99,
+        "generation_tokens_per_second": 112.20620294209242,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 8500, \"days\": 2, \"departure_city\": \"广州\", \"destination\": \"成都\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-08-22\", \"themes\": [\"自然\", \"休闲\"]}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0016",
+        "success": true,
+        "wall_latency_ms": 1655.342,
+        "completion_tokens": 182,
+        "generation_tokens_per_second": 113.55473369532825,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 3200, \"days\": 5, \"departure_city\": \"武汉\", \"destination\": \"杭州\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-01\", \"themes\": [\"休闲\", \"海边\"], \"traveler_count\": 2}, \"tool_call\": {\"arguments\": {\"budget_cny\": 3200, \"days\": 5, \"departure_city\": \"武汉\", \"destination\": \"杭州\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-01\", \"themes\": [\"休闲\", \"海边\"], \"traveler_count\": 2}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0017",
+        "success": true,
+        "wall_latency_ms": 975.186,
+        "completion_tokens": 104,
+        "generation_tokens_per_second": 113.72770716109142,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 3200, \"days\": null, \"departure_city\": \"广州\", \"destination\": \"北京\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-08-21\", \"themes\": [\"休闲\", \"美食\"], \"traveler_count\": 4}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0018",
+        "success": true,
+        "wall_latency_ms": 938.351,
+        "completion_tokens": 103,
+        "generation_tokens_per_second": 112.69472986410342,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 8500, \"days\": null, \"departure_city\": \"上海\", \"destination\": \"杭州\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-08-22\", \"themes\": [\"摄影\", \"海边\"], \"traveler_count\": 3}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0019",
+        "success": true,
+        "wall_latency_ms": 907.667,
+        "completion_tokens": 98,
+        "generation_tokens_per_second": 112.37412939012127,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 8500, \"days\": 5, \"departure_city\": \"南京\", \"destination\": \"成都\", \"hotel_preference\": \"市中心\", \"start_date\": \"2026-09-07\", \"themes\": [\"海边\", \"摄影\"]}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0020",
+        "success": true,
+        "wall_latency_ms": 1599.596,
+        "completion_tokens": 178,
+        "generation_tokens_per_second": 113.21623661553812,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 10000, \"days\": 3, \"departure_city\": \"长沙\", \"destination\": \"杭州\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-09-19\", \"themes\": [\"自然\"], \"traveler_count\": 5}, \"tool_call\": {\"arguments\": {\"budget_cny\": 10000, \"days\": 3, \"departure_city\": \"长沙\", \"destination\": \"杭州\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-09-19\", \"themes\": [\"自然\"], \"traveler_count\": 5}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0021",
+        "success": true,
+        "wall_latency_ms": 962.394,
+        "completion_tokens": 102,
+        "generation_tokens_per_second": 113.41433287668158,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 8500, \"days\": 5, \"departure_city\": \"上海\", \"destination\": \"杭州\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-21\", \"themes\": [\"休闲\"], \"traveler_count\": null}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0022",
+        "success": true,
+        "wall_latency_ms": 1608.157,
+        "completion_tokens": 176,
+        "generation_tokens_per_second": 112.74923217772887,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 3200, \"days\": 3, \"departure_city\": \"南京\", \"destination\": \"厦门\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-08-22\", \"themes\": [\"人文\"], \"traveler_count\": 4}, \"tool_call\": {\"arguments\": {\"budget_cny\": 3200, \"days\": 3, \"departure_city\": \"南京\", \"destination\": \"厦门\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-08-22\", \"themes\": [\"人文\"], \"traveler_count\": 4}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0023",
+        "success": true,
+        "wall_latency_ms": 933.468,
+        "completion_tokens": 99,
+        "generation_tokens_per_second": 112.51900193348978,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：目的地。\", \"missing_fields\": [\"destination\"], \"request\": {\"budget_cny\": 3200, \"days\": 5, \"departure_city\": \"苏州\", \"destination\": null, \"hotel_preference\": \"经济型\", \"start_date\": \"2026-09-19\", \"themes\": [\"自然\"], \"traveler_count\": 4}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0024",
+        "success": true,
+        "wall_latency_ms": 1596.263,
+        "completion_tokens": 176,
+        "generation_tokens_per_second": 112.040657313726,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 3200, \"days\": 4, \"departure_city\": \"武汉\", \"destination\": \"杭州\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-03\", \"themes\": [\"海边\"], \"traveler_count\": 4}, \"tool_call\": {\"arguments\": {\"budget_cny\": 3200, \"days\": 4, \"departure_city\": \"武汉\", \"destination\": \"杭州\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-03\", \"themes\": [\"海边\"], \"traveler_count\": 4}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0025",
+        "success": true,
+        "wall_latency_ms": 935.34,
+        "completion_tokens": 98,
+        "generation_tokens_per_second": 112.64360608182571,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：目的地。\", \"missing_fields\": [\"destination\"], \"request\": {\"budget_cny\": 5000, \"days\": 4, \"departure_city\": \"深圳\", \"destination\": null, \"hotel_preference\": \"市中心\", \"start_date\": \"2026-10-03\", \"themes\": [\"海边\"], \"traveler_count\": 2}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0026",
+        "success": true,
+        "wall_latency_ms": 909.605,
+        "completion_tokens": 99,
+        "generation_tokens_per_second": 112.04187164803302,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：目的地。\", \"missing_fields\": [\"destination\"], \"request\": {\"budget_cny\": 4200, \"days\": 2, \"departure_city\": \"重庆\", \"destination\": null, \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-09-07\", \"themes\": [\"海边\"], \"traveler_count\": 5}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0027",
+        "success": true,
+        "wall_latency_ms": 948.126,
+        "completion_tokens": 102,
+        "generation_tokens_per_second": 111.79429849077697,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 5000, \"days\": 5, \"departure_city\": \"南京\", \"destination\": \"杭州\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-22\", \"themes\": [\"自然\"], \"traveler_count\": null}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0028",
+        "success": true,
+        "wall_latency_ms": 1657.777,
+        "completion_tokens": 180,
+        "generation_tokens_per_second": 111.1961475193941,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 6800, \"days\": 4, \"departure_city\": \"深圳\", \"destination\": \"西安\", \"hotel_preference\": \"市中心\", \"start_date\": \"2026-09-19\", \"themes\": [\"海边\", \"自然\"], \"traveler_count\": 2}, \"tool_call\": {\"arguments\": {\"budget_cny\": 6800, \"days\": 4, \"departure_city\": \"深圳\", \"destination\": \"西安\", \"hotel_preference\": \"市中心\", \"start_date\": \"2026-09-19\", \"themes\": [\"海边\", \"自然\"], \"traveler_count\": 2}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0029",
+        "success": true,
+        "wall_latency_ms": 841.788,
+        "completion_tokens": 89,
+        "generation_tokens_per_second": 112.17493170713674,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['themes', 'traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 4200, \"days\": 2, \"departure_city\": \"南京\", \"destination\": \"成都\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-09-19\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0030",
+        "success": true,
+        "wall_latency_ms": 962.876,
+        "completion_tokens": 104,
+        "generation_tokens_per_second": 112.20202464740787,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 4200, \"days\": null, \"departure_city\": \"上海\", \"destination\": \"成都\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-22\", \"themes\": [\"自然\", \"摄影\"], \"traveler_count\": 4}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0031",
+        "success": true,
+        "wall_latency_ms": 894.003,
+        "completion_tokens": 94,
+        "generation_tokens_per_second": 109.74694478666609,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 4200, \"days\": 4, \"departure_city\": \"苏州\", \"destination\": \"西安\", \"hotel_preference\": \"市中心\", \"start_date\": null, \"themes\": [\"美食\", \"海边\"], \"traveler_count\": 5}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0032",
+        "success": true,
+        "wall_latency_ms": 825.479,
+        "completion_tokens": 86,
+        "generation_tokens_per_second": 110.01641186002807,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['themes', 'traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：目的地。\", \"missing_fields\": [\"destination\"], \"request\": {\"budget_cny\": 10000, \"days\": 3, \"departure_city\": \"重庆\", \"destination\": null, \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-18\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0033",
+        "success": true,
+        "wall_latency_ms": 966.929,
+        "completion_tokens": 101,
+        "generation_tokens_per_second": 109.54870316245196,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 6800, \"days\": null, \"departure_city\": \"深圳\", \"destination\": \"北京\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-11-08\", \"themes\": [\"海边\"], \"traveler_count\": 5}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0034",
+        "success": true,
+        "wall_latency_ms": 886.802,
+        "completion_tokens": 94,
+        "generation_tokens_per_second": 110.62723261814216,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 4200, \"days\": 2, \"departure_city\": \"重庆\", \"destination\": \"北京\", \"hotel_preference\": \"高档\", \"start_date\": null, \"themes\": [\"海边\", \"自然\"], \"traveler_count\": 3}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0035",
+        "success": true,
+        "wall_latency_ms": 1475.498,
+        "completion_tokens": 160,
+        "generation_tokens_per_second": 111.25867852679515,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 4, \"departure_city\": \"长沙\", \"destination\": \"西安\", \"hotel_preference\": null, \"start_date\": \"2026-08-21\", \"themes\": [], \"traveler_count\": 5}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 4, \"departure_city\": \"长沙\", \"destination\": \"西安\", \"hotel_preference\": null, \"start_date\": \"2026-08-21\", \"themes\": [], \"traveler_count\": 5}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0036",
+        "success": true,
+        "wall_latency_ms": 922.054,
+        "completion_tokens": 94,
+        "generation_tokens_per_second": 109.19991686716006,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 3200, \"days\": 5, \"departure_city\": \"广州\", \"destination\": \"厦门\", \"hotel_preference\": \"市中心\", \"start_date\": null, \"themes\": [\"美食\", \"休闲\"], \"traveler_count\": 1}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0037",
+        "success": true,
+        "wall_latency_ms": 955.061,
+        "completion_tokens": 100,
+        "generation_tokens_per_second": 109.88145012436583,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成行程，请补充：出发城市。\", \"missing_fields\": [\"departure_city\"], \"request\": {\"budget_cny\": 6800, \"days\": 3, \"departure_city\": null, \"destination\": \"北京\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-11-08\", \"themes\": [\"摄影\"], \"traveler_count\": 5}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0038",
+        "success": true,
+        "wall_latency_ms": 996.734,
+        "completion_tokens": 105,
+        "generation_tokens_per_second": 110.87668274023191,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [
+          "rebuilt_tool_arguments_from_complete_model_request"
+        ],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 5000, \"days\": 3, \"departure_city\": \"南京\", \"destination\": \"西安\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-01\", \"themes\": [\"休闲\"], \"traveler_count\": 4}, \"tool_call\": {\"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0039",
+        "success": true,
+        "wall_latency_ms": 943.551,
+        "completion_tokens": 100,
+        "generation_tokens_per_second": 111.71885667599162,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成行程，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 5000, \"days\": null, \"departure_city\": \"南京\", \"destination\": \"北京\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-21\", \"themes\": [\"美食\"], \"traveler_count\": 1}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0040",
+        "success": true,
+        "wall_latency_ms": 1706.123,
+        "completion_tokens": 182,
+        "generation_tokens_per_second": 109.75271077068233,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 5000, \"days\": 2, \"departure_city\": \"上海\", \"destination\": \"成都\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-08-22\", \"themes\": [\"美食\", \"人文\"], \"traveler_count\": 2}, \"tool_call\": {\"arguments\": {\"budget_cny\": 5000, \"days\": 2, \"departure_city\": \"上海\", \"destination\": \"成都\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-08-22\", \"themes\": [\"美食\", \"人文\"], \"traveler_count\": 2}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0041",
+        "success": true,
+        "wall_latency_ms": 954.426,
+        "completion_tokens": 99,
+        "generation_tokens_per_second": 111.62290593150453,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 10000, \"days\": 2, \"departure_city\": \"苏州\", \"destination\": \"西安\", \"hotel_preference\": \"市中心\", \"start_date\": \"2026-10-03\", \"themes\": [\"美食\", \"摄影\"]}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0042",
+        "success": true,
+        "wall_latency_ms": 1703.781,
+        "completion_tokens": 182,
+        "generation_tokens_per_second": 109.9235454412398,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 8500, \"days\": 3, \"departure_city\": \"南京\", \"destination\": \"北京\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-18\", \"themes\": [\"美食\", \"自然\"], \"traveler_count\": 3}, \"tool_call\": {\"arguments\": {\"budget_cny\": 8500, \"days\": 3, \"departure_city\": \"南京\", \"destination\": \"北京\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-18\", \"themes\": [\"美食\", \"自然\"], \"traveler_count\": 3}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0043",
+        "success": true,
+        "wall_latency_ms": 1698.521,
+        "completion_tokens": 180,
+        "generation_tokens_per_second": 109.65167522031409,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 4200, \"days\": 5, \"departure_city\": \"上海\", \"destination\": \"成都\", \"hotel_preference\": \"市中心\", \"start_date\": \"2026-09-07\", \"themes\": [\"自然\", \"休闲\"], \"traveler_count\": 5}, \"tool_call\": {\"arguments\": {\"budget_cny\": 4200, \"days\": 5, \"departure_city\": \"上海\", \"destination\": \"成都\", \"hotel_preference\": \"市中心\", \"start_date\": \"2026-09-07\", \"themes\": [\"自然\", \"休闲\"], \"traveler_count\": 5}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0044",
+        "success": true,
+        "wall_latency_ms": 1507.175,
+        "completion_tokens": 160,
+        "generation_tokens_per_second": 110.32541835190479,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 4, \"departure_city\": \"长沙\", \"destination\": \"成都\", \"hotel_preference\": null, \"start_date\": \"2026-09-07\", \"themes\": [], \"traveler_count\": 4}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 4, \"departure_city\": \"长沙\", \"destination\": \"成都\", \"hotel_preference\": null, \"start_date\": \"2026-09-07\", \"themes\": [], \"traveler_count\": 4}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0045",
+        "success": true,
+        "wall_latency_ms": 1004.02,
+        "completion_tokens": 104,
+        "generation_tokens_per_second": 109.75287488598488,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [
+          "rebuilt_tool_arguments_from_complete_model_request"
+        ],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 4200, \"days\": 2, \"departure_city\": \"苏州\", \"destination\": \"杭州\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-09-19\", \"themes\": [\"人文\"], \"traveler_count\": 4}, \"tool_call\": {\"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0046",
+        "success": true,
+        "wall_latency_ms": 952.155,
+        "completion_tokens": 99,
+        "generation_tokens_per_second": 109.52327201892741,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成行程，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 4200, \"days\": null, \"departure_city\": \"广州\", \"destination\": \"成都\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-08-22\", \"themes\": [\"美食\"], \"traveler_count\": 1}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0047",
+        "success": true,
+        "wall_latency_ms": 851.676,
+        "completion_tokens": 89,
+        "generation_tokens_per_second": 110.62600490525763,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['themes', 'traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 5000, \"days\": 4, \"departure_city\": \"上海\", \"destination\": \"厦门\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-11-08\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0048",
+        "success": true,
+        "wall_latency_ms": 951.242,
+        "completion_tokens": 101,
+        "generation_tokens_per_second": 110.34129666471361,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 8500, \"days\": null, \"departure_city\": \"长沙\", \"destination\": \"厦门\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-01\", \"themes\": [\"自然\"], \"traveler_count\": 2}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0049",
+        "success": true,
+        "wall_latency_ms": 900.831,
+        "completion_tokens": 95,
+        "generation_tokens_per_second": 111.00076637763169,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 10000, \"days\": 4, \"departure_city\": \"南京\", \"destination\": \"北京\", \"hotel_preference\": \"高档\", \"start_date\": null, \"themes\": [\"摄影\", \"休闲\"], \"traveler_count\": 2}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0050",
+        "success": true,
+        "wall_latency_ms": 1630.007,
+        "completion_tokens": 174,
+        "generation_tokens_per_second": 109.76015186236965,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 6800, \"days\": 3, \"departure_city\": \"南京\", \"destination\": \"北京\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-10-18\", \"themes\": [\"海边\"], \"traveler_count\": 3}, \"tool_call\": {\"arguments\": {\"budget_cny\": 6800, \"days\": 3, \"departure_city\": \"南京\", \"destination\": \"北京\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-10-18\", \"themes\": [\"海边\"], \"traveler_count\": 3}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0051",
+        "success": true,
+        "wall_latency_ms": 916.604,
+        "completion_tokens": 95,
+        "generation_tokens_per_second": 110.46165922813152,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 4200, \"days\": 5, \"departure_city\": \"广州\", \"destination\": \"西安\", \"hotel_preference\": \"经济型\", \"start_date\": null, \"themes\": [\"自然\", \"美食\"], \"traveler_count\": 2}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0052",
+        "success": true,
+        "wall_latency_ms": 961.813,
+        "completion_tokens": 102,
+        "generation_tokens_per_second": 110.8101317762864,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 3200, \"days\": 3, \"departure_city\": \"苏州\", \"destination\": \"杭州\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-01\", \"themes\": [\"美食\"], \"traveler_count\": null}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0053",
+        "success": true,
+        "wall_latency_ms": 1648.986,
+        "completion_tokens": 176,
+        "generation_tokens_per_second": 109.49311569855983,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 3200, \"days\": 4, \"departure_city\": \"南京\", \"destination\": \"北京\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-18\", \"themes\": [\"休闲\"], \"traveler_count\": 3}, \"tool_call\": {\"arguments\": {\"budget_cny\": 3200, \"days\": 4, \"departure_city\": \"南京\", \"destination\": \"北京\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-18\", \"themes\": [\"休闲\"], \"traveler_count\": 3}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0054",
+        "success": true,
+        "wall_latency_ms": 860.419,
+        "completion_tokens": 89,
+        "generation_tokens_per_second": 108.81473549363557,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['themes', 'traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 10000, \"days\": 5, \"departure_city\": \"南京\", \"destination\": \"厦门\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-11-21\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0055",
+        "success": true,
+        "wall_latency_ms": 1494.876,
+        "completion_tokens": 160,
+        "generation_tokens_per_second": 110.22744288970601,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"长沙\", \"destination\": \"西安\", \"hotel_preference\": null, \"start_date\": \"2026-10-03\", \"themes\": [], \"traveler_count\": 4}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"长沙\", \"destination\": \"西安\", \"hotel_preference\": null, \"start_date\": \"2026-10-03\", \"themes\": [], \"traveler_count\": 4}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0056",
+        "success": true,
+        "wall_latency_ms": 1519.994,
+        "completion_tokens": 160,
+        "generation_tokens_per_second": 109.3754729285386,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 5, \"departure_city\": \"苏州\", \"destination\": \"西安\", \"hotel_preference\": null, \"start_date\": \"2026-08-21\", \"themes\": [], \"traveler_count\": 4}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 5, \"departure_city\": \"苏州\", \"destination\": \"西安\", \"hotel_preference\": null, \"start_date\": \"2026-08-21\", \"themes\": [], \"traveler_count\": 4}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0057",
+        "success": true,
+        "wall_latency_ms": 1708.357,
+        "completion_tokens": 178,
+        "generation_tokens_per_second": 108.57710016942936,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 10000, \"days\": 5, \"departure_city\": \"长沙\", \"destination\": \"成都\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-03\", \"themes\": [\"摄影\"], \"traveler_count\": 2}, \"tool_call\": {\"arguments\": {\"budget_cny\": 10000, \"days\": 5, \"departure_city\": \"长沙\", \"destination\": \"成都\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-03\", \"themes\": [\"摄影\"], \"traveler_count\": 2}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0058",
+        "success": true,
+        "wall_latency_ms": 975.211,
+        "completion_tokens": 99,
+        "generation_tokens_per_second": 109.23930430168775,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：目的地。\", \"missing_fields\": [\"destination\"], \"request\": {\"budget_cny\": 8500, \"days\": 5, \"departure_city\": \"武汉\", \"destination\": null, \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-09-19\", \"themes\": [\"海边\"], \"traveler_count\": 2}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0059",
+        "success": true,
+        "wall_latency_ms": 1499.913,
+        "completion_tokens": 160,
+        "generation_tokens_per_second": 109.26167966124757,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 5, \"departure_city\": \"广州\", \"destination\": \"西安\", \"hotel_preference\": null, \"start_date\": \"2026-08-21\", \"themes\": [], \"traveler_count\": 3}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 5, \"departure_city\": \"广州\", \"destination\": \"西安\", \"hotel_preference\": null, \"start_date\": \"2026-08-21\", \"themes\": [], \"traveler_count\": 3}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0060",
+        "success": true,
+        "wall_latency_ms": 1748.77,
+        "completion_tokens": 182,
+        "generation_tokens_per_second": 108.32679981087698,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 4200, \"days\": 2, \"departure_city\": \"武汉\", \"destination\": \"北京\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-11-21\", \"themes\": [\"摄影\", \"美食\"], \"traveler_count\": 2}, \"tool_call\": {\"arguments\": {\"budget_cny\": 4200, \"days\": 2, \"departure_city\": \"武汉\", \"destination\": \"北京\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-11-21\", \"themes\": [\"摄影\", \"美食\"], \"traveler_count\": 2}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0061",
+        "success": true,
+        "wall_latency_ms": 964.766,
+        "completion_tokens": 99,
+        "generation_tokens_per_second": 109.17140021232723,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：目的地。\", \"missing_fields\": [\"destination\"], \"request\": {\"budget_cny\": 6800, \"days\": 5, \"departure_city\": \"深圳\", \"destination\": null, \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-18\", \"themes\": [\"休闲\"], \"traveler_count\": 5}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0062",
+        "success": true,
+        "wall_latency_ms": 913.672,
+        "completion_tokens": 95,
+        "generation_tokens_per_second": 109.19262508363691,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 3200, \"days\": 4, \"departure_city\": \"广州\", \"destination\": \"北京\", \"hotel_preference\": \"靠近地铁\", \"start_date\": null, \"themes\": [\"海边\", \"摄影\"], \"traveler_count\": 2}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0063",
+        "success": true,
+        "wall_latency_ms": 941.916,
+        "completion_tokens": 98,
+        "generation_tokens_per_second": 108.95362955990596,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：目的地。\", \"missing_fields\": [\"destination\"], \"request\": {\"budget_cny\": 8500, \"days\": 5, \"departure_city\": \"深圳\", \"destination\": null, \"hotel_preference\": \"高档\", \"start_date\": \"2026-10-01\", \"themes\": [\"人文\"], \"traveler_count\": 5}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0064",
+        "success": true,
+        "wall_latency_ms": 1016.22,
+        "completion_tokens": 108,
+        "generation_tokens_per_second": 109.22279306159655,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [
+          "rebuilt_tool_arguments_from_complete_model_request"
+        ],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 10000, \"days\": 3, \"departure_city\": \"上海\", \"destination\": \"杭州\", \"hotel_preference\": \"市中心\", \"start_date\": \"2026-09-19\", \"themes\": [\"休闲\", \"人文\"], \"traveler_count\": 5}, \"tool_call\": {\"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0065",
+        "success": true,
+        "wall_latency_ms": 1701.409,
+        "completion_tokens": 182,
+        "generation_tokens_per_second": 109.56887372278106,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 3200, \"days\": 3, \"departure_city\": \"南京\", \"destination\": \"厦门\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-09-19\", \"themes\": [\"自然\", \"海边\"], \"traveler_count\": 1}, \"tool_call\": {\"arguments\": {\"budget_cny\": 3200, \"days\": 3, \"departure_city\": \"南京\", \"destination\": \"厦门\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-09-19\", \"themes\": [\"自然\", \"海边\"], \"traveler_count\": 1}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0066",
+        "success": true,
+        "wall_latency_ms": 1554.845,
+        "completion_tokens": 160,
+        "generation_tokens_per_second": 106.88026586970287,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 4, \"departure_city\": \"武汉\", \"destination\": \"杭州\", \"hotel_preference\": null, \"start_date\": \"2026-10-03\", \"themes\": [], \"traveler_count\": 5}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 4, \"departure_city\": \"武汉\", \"destination\": \"杭州\", \"hotel_preference\": null, \"start_date\": \"2026-10-03\", \"themes\": [], \"traveler_count\": 5}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0067",
+        "success": true,
+        "wall_latency_ms": 1023.318,
+        "completion_tokens": 104,
+        "generation_tokens_per_second": 108.76922865720692,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 5000, \"days\": null, \"departure_city\": \"长沙\", \"destination\": \"北京\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-18\", \"themes\": [\"人文\", \"摄影\"], \"traveler_count\": 5}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0068",
+        "success": true,
+        "wall_latency_ms": 952.901,
+        "completion_tokens": 99,
+        "generation_tokens_per_second": 109.64286633303908,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 8500, \"days\": 5, \"departure_city\": \"深圳\", \"destination\": \"成都\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-11-21\", \"themes\": [\"美食\", \"摄影\"]}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0069",
+        "success": true,
+        "wall_latency_ms": 1509.494,
+        "completion_tokens": 160,
+        "generation_tokens_per_second": 108.92067149936497,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"上海\", \"destination\": \"西安\", \"hotel_preference\": null, \"start_date\": \"2026-09-19\", \"themes\": [], \"traveler_count\": 5}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"上海\", \"destination\": \"西安\", \"hotel_preference\": null, \"start_date\": \"2026-09-19\", \"themes\": [], \"traveler_count\": 5}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0070",
+        "success": true,
+        "wall_latency_ms": 1028.256,
+        "completion_tokens": 105,
+        "generation_tokens_per_second": 107.72692054310942,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 10000, \"days\": null, \"departure_city\": \"长沙\", \"destination\": \"厦门\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-21\", \"themes\": [\"人文\", \"休闲\"], \"traveler_count\": 5}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0071",
+        "success": true,
+        "wall_latency_ms": 963.007,
+        "completion_tokens": 99,
+        "generation_tokens_per_second": 107.95365043065796,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成行程，请补充：出发城市。\", \"missing_fields\": [\"departure_city\"], \"request\": {\"budget_cny\": 8500, \"days\": 5, \"departure_city\": null, \"destination\": \"厦门\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-10-01\", \"themes\": [\"美食\"], \"traveler_count\": 1}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0072",
+        "success": true,
+        "wall_latency_ms": 957.638,
+        "completion_tokens": 99,
+        "generation_tokens_per_second": 106.45763312092501,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 5000, \"days\": 4, \"departure_city\": \"武汉\", \"destination\": \"杭州\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-01\", \"themes\": [\"休闲\", \"摄影\"]}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0073",
+        "success": true,
+        "wall_latency_ms": 1007.134,
+        "completion_tokens": 104,
+        "generation_tokens_per_second": 108.87937750594345,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 6800, \"days\": null, \"departure_city\": \"苏州\", \"destination\": \"西安\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-10-01\", \"themes\": [\"摄影\", \"自然\"], \"traveler_count\": 4}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0074",
+        "success": true,
+        "wall_latency_ms": 1519.162,
+        "completion_tokens": 160,
+        "generation_tokens_per_second": 108.39229010412477,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 2, \"departure_city\": \"上海\", \"destination\": \"西安\", \"hotel_preference\": null, \"start_date\": \"2026-08-21\", \"themes\": [], \"traveler_count\": 2}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 2, \"departure_city\": \"上海\", \"destination\": \"西安\", \"hotel_preference\": null, \"start_date\": \"2026-08-21\", \"themes\": [], \"traveler_count\": 2}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0075",
+        "success": true,
+        "wall_latency_ms": 1690.996,
+        "completion_tokens": 176,
+        "generation_tokens_per_second": 108.22062412998348,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 8500, \"days\": 4, \"departure_city\": \"深圳\", \"destination\": \"成都\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-09-07\", \"themes\": [\"休闲\"], \"traveler_count\": 3}, \"tool_call\": {\"arguments\": {\"budget_cny\": 8500, \"days\": 4, \"departure_city\": \"深圳\", \"destination\": \"成都\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-09-07\", \"themes\": [\"休闲\"], \"traveler_count\": 3}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0076",
+        "success": true,
+        "wall_latency_ms": 941.655,
+        "completion_tokens": 94,
+        "generation_tokens_per_second": 108.27323974489428,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 6800, \"days\": 5, \"departure_city\": \"深圳\", \"destination\": \"北京\", \"hotel_preference\": \"市中心\", \"start_date\": null, \"themes\": [\"海边\", \"自然\"], \"traveler_count\": 3}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0077",
+        "success": true,
+        "wall_latency_ms": 1653.923,
+        "completion_tokens": 174,
+        "generation_tokens_per_second": 107.76170834075621,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 4200, \"days\": 2, \"departure_city\": \"南京\", \"destination\": \"北京\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-11-08\", \"themes\": [\"美食\"], \"traveler_count\": 2}, \"tool_call\": {\"arguments\": {\"budget_cny\": 4200, \"days\": 2, \"departure_city\": \"南京\", \"destination\": \"北京\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-11-08\", \"themes\": [\"美食\"], \"traveler_count\": 2}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0078",
+        "success": true,
+        "wall_latency_ms": 1716.32,
+        "completion_tokens": 176,
+        "generation_tokens_per_second": 107.43736708462873,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 3200, \"days\": 5, \"departure_city\": \"苏州\", \"destination\": \"厦门\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-03\", \"themes\": [\"人文\"], \"traveler_count\": 5}, \"tool_call\": {\"arguments\": {\"budget_cny\": 3200, \"days\": 5, \"departure_city\": \"苏州\", \"destination\": \"厦门\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-03\", \"themes\": [\"人文\"], \"traveler_count\": 5}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0079",
+        "success": true,
+        "wall_latency_ms": 1706.558,
+        "completion_tokens": 176,
+        "generation_tokens_per_second": 107.22191689504936,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 4200, \"days\": 3, \"departure_city\": \"武汉\", \"destination\": \"厦门\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-22\", \"themes\": [\"人文\"], \"traveler_count\": 2}, \"tool_call\": {\"arguments\": {\"budget_cny\": 4200, \"days\": 3, \"departure_city\": \"武汉\", \"destination\": \"厦门\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-22\", \"themes\": [\"人文\"], \"traveler_count\": 2}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0080",
+        "success": true,
+        "wall_latency_ms": 1021.952,
+        "completion_tokens": 104,
+        "generation_tokens_per_second": 109.12982210779484,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 6800, \"days\": 2, \"departure_city\": \"广州\", \"destination\": \"西安\", \"hotel_preference\": \"市中心\", \"start_date\": \"2026-10-03\", \"themes\": [\"摄影\", \"海边\"], \"traveler_count\": null}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0081",
+        "success": true,
+        "wall_latency_ms": 1536.618,
+        "completion_tokens": 160,
+        "generation_tokens_per_second": 107.24880508642634,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"长沙\", \"destination\": \"北京\", \"hotel_preference\": null, \"start_date\": \"2026-10-03\", \"themes\": [], \"traveler_count\": 3}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"长沙\", \"destination\": \"北京\", \"hotel_preference\": null, \"start_date\": \"2026-10-03\", \"themes\": [], \"traveler_count\": 3}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0082",
+        "success": true,
+        "wall_latency_ms": 1072.848,
+        "completion_tokens": 107,
+        "generation_tokens_per_second": 106.5162844306353,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [
+          "rebuilt_tool_arguments_from_complete_model_request"
+        ],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 8500, \"days\": 4, \"departure_city\": \"武汉\", \"destination\": \"杭州\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-11-08\", \"themes\": [\"美食\", \"休闲\"], \"traveler_count\": 1}, \"tool_call\": {\"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0083",
+        "success": true,
+        "wall_latency_ms": 963.551,
+        "completion_tokens": 99,
+        "generation_tokens_per_second": 107.31340881043087,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 5000, \"days\": 4, \"departure_city\": \"广州\", \"destination\": \"杭州\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-09-07\", \"themes\": [\"自然\", \"人文\"]}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0084",
+        "success": true,
+        "wall_latency_ms": 919.709,
+        "completion_tokens": 95,
+        "generation_tokens_per_second": 108.3738390164267,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 8500, \"days\": 3, \"departure_city\": \"重庆\", \"destination\": \"西安\", \"hotel_preference\": \"靠近地铁\", \"start_date\": null, \"themes\": [\"海边\", \"摄影\"], \"traveler_count\": 2}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0085",
+        "success": true,
+        "wall_latency_ms": 992.328,
+        "completion_tokens": 103,
+        "generation_tokens_per_second": 108.28841664286799,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 5000, \"days\": null, \"departure_city\": \"深圳\", \"destination\": \"西安\", \"hotel_preference\": \"高档\", \"start_date\": \"2026-10-18\", \"themes\": [\"摄影\", \"人文\"], \"traveler_count\": 4}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0086",
+        "success": true,
+        "wall_latency_ms": 1035.196,
+        "completion_tokens": 108,
+        "generation_tokens_per_second": 108.68450108227417,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [
+          "rebuilt_tool_arguments_from_complete_model_request"
+        ],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 3200, \"days\": 3, \"departure_city\": \"武汉\", \"destination\": \"厦门\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-09-07\", \"themes\": [\"休闲\", \"人文\"], \"traveler_count\": 2}, \"tool_call\": {\"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0087",
+        "success": true,
+        "wall_latency_ms": 969.683,
+        "completion_tokens": 99,
+        "generation_tokens_per_second": 107.46922048626533,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 4200, \"days\": 2, \"departure_city\": \"苏州\", \"destination\": \"杭州\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-11-08\", \"themes\": [\"美食\", \"摄影\"]}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0088",
+        "success": true,
+        "wall_latency_ms": 877.389,
+        "completion_tokens": 91,
+        "generation_tokens_per_second": 109.02007907589737,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 4200, \"days\": 4, \"departure_city\": \"重庆\", \"destination\": \"北京\", \"hotel_preference\": \"高档\", \"start_date\": null, \"themes\": [\"休闲\"], \"traveler_count\": 5}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0089",
+        "success": true,
+        "wall_latency_ms": 1512.162,
+        "completion_tokens": 160,
+        "generation_tokens_per_second": 108.17158053646301,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"南京\", \"destination\": \"厦门\", \"hotel_preference\": null, \"start_date\": \"2026-10-18\", \"themes\": [], \"traveler_count\": 3}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"南京\", \"destination\": \"厦门\", \"hotel_preference\": null, \"start_date\": \"2026-10-18\", \"themes\": [], \"traveler_count\": 3}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0090",
+        "success": true,
+        "wall_latency_ms": 1010.422,
+        "completion_tokens": 104,
+        "generation_tokens_per_second": 109.68695555867933,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 3200, \"days\": null, \"departure_city\": \"长沙\", \"destination\": \"杭州\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-21\", \"themes\": [\"美食\", \"摄影\"], \"traveler_count\": 2}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0091",
+        "success": true,
+        "wall_latency_ms": 1007.966,
+        "completion_tokens": 105,
+        "generation_tokens_per_second": 107.04544284905565,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 10000, \"days\": null, \"departure_city\": \"苏州\", \"destination\": \"成都\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-22\", \"themes\": [\"休闲\", \"人文\"], \"traveler_count\": 1}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0092",
+        "success": true,
+        "wall_latency_ms": 902.779,
+        "completion_tokens": 92,
+        "generation_tokens_per_second": 106.56186911860452,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 8500, \"days\": 2, \"departure_city\": \"重庆\", \"destination\": \"杭州\", \"hotel_preference\": \"靠近地铁\", \"start_date\": null, \"themes\": [\"人文\"], \"traveler_count\": 3}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0093",
+        "success": true,
+        "wall_latency_ms": 1727.034,
+        "completion_tokens": 182,
+        "generation_tokens_per_second": 107.76991302193981,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 6800, \"days\": 4, \"departure_city\": \"上海\", \"destination\": \"厦门\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-11-21\", \"themes\": [\"美食\", \"摄影\"], \"traveler_count\": 2}, \"tool_call\": {\"arguments\": {\"budget_cny\": 6800, \"days\": 4, \"departure_city\": \"上海\", \"destination\": \"厦门\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-11-21\", \"themes\": [\"美食\", \"摄影\"], \"traveler_count\": 2}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0094",
+        "success": true,
+        "wall_latency_ms": 966.266,
+        "completion_tokens": 99,
+        "generation_tokens_per_second": 107.08334471549158,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：目的地。\", \"missing_fields\": [\"destination\"], \"request\": {\"budget_cny\": 10000, \"days\": 4, \"departure_city\": \"广州\", \"destination\": null, \"hotel_preference\": \"市中心\", \"start_date\": \"2026-09-19\", \"themes\": [\"美食\"], \"traveler_count\": 3}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0095",
+        "success": true,
+        "wall_latency_ms": 1000.435,
+        "completion_tokens": 101,
+        "generation_tokens_per_second": 106.4460536722292,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 5000, \"days\": null, \"departure_city\": \"深圳\", \"destination\": \"北京\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-10-01\", \"themes\": [\"海边\"], \"traveler_count\": 2}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0096",
+        "success": true,
+        "wall_latency_ms": 1518.584,
+        "completion_tokens": 160,
+        "generation_tokens_per_second": 107.05376590236563,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"上海\", \"destination\": \"北京\", \"hotel_preference\": null, \"start_date\": \"2026-10-01\", \"themes\": [], \"traveler_count\": 4}, \"tool_call\": {\"arguments\": {\"budget_cny\": null, \"days\": 3, \"departure_city\": \"上海\", \"destination\": \"北京\", \"hotel_preference\": null, \"start_date\": \"2026-10-01\", \"themes\": [], \"traveler_count\": 4}, \"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0097",
+        "success": true,
+        "wall_latency_ms": 1057.152,
+        "completion_tokens": 107,
+        "generation_tokens_per_second": 107.71514830648415,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [
+          "rebuilt_tool_arguments_from_complete_model_request"
+        ],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 8500, \"days\": 3, \"departure_city\": \"武汉\", \"destination\": \"杭州\", \"hotel_preference\": \"市中心\", \"start_date\": \"2026-10-18\", \"themes\": [\"海边\", \"自然\"], \"traveler_count\": 5}, \"tool_call\": {\"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0098",
+        "success": true,
+        "wall_latency_ms": 956.788,
+        "completion_tokens": 96,
+        "generation_tokens_per_second": 104.72058343695159,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发日期。\", \"missing_fields\": [\"start_date\"], \"request\": {\"budget_cny\": 10000, \"days\": 5, \"departure_city\": \"上海\", \"destination\": \"杭州\", \"hotel_preference\": \"经济型\", \"start_date\": null, \"themes\": [\"摄影\", \"海边\"], \"traveler_count\": 3}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0099",
+        "success": true,
+        "wall_latency_ms": 1038.233,
+        "completion_tokens": 105,
+        "generation_tokens_per_second": 105.40248547168625,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [
+          "rebuilt_tool_arguments_from_complete_model_request"
+        ],
+        "raw_output": "{\"action\": \"tool_call\", \"message\": \"正在查询本地演示目录中的旅行选项。\", \"request\": {\"budget_cny\": 5000, \"days\": 5, \"departure_city\": \"重庆\", \"destination\": \"西安\", \"hotel_preference\": \"靠近地铁\", \"start_date\": \"2026-08-22\", \"themes\": [\"人文\"], \"traveler_count\": 2}, \"tool_call\": {\"name\": \"search_trip_options\"}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0100",
+        "success": true,
+        "wall_latency_ms": 979.268,
+        "completion_tokens": 100,
+        "generation_tokens_per_second": 106.80118581680252,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成行程，请补充：旅行天数。\", \"missing_fields\": [\"days\"], \"request\": {\"budget_cny\": 6800, \"days\": null, \"departure_city\": \"上海\", \"destination\": \"西安\", \"hotel_preference\": \"经济型\", \"start_date\": \"2026-08-21\", \"themes\": [\"摄影\"], \"traveler_count\": 2}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0101",
+        "success": true,
+        "wall_latency_ms": 864.77,
+        "completion_tokens": 90,
+        "generation_tokens_per_second": 108.53407055202379,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['budget_cny']:unknown=['budget']",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：预算。\", \"missing_fields\": [\"budget\"], \"request\": {\"budget\": null, \"days\": 4, \"departure_city\": \"广州\", \"destination\": \"北京\", \"hotel_preference\": null, \"start_date\": \"2026-08-22\", \"themes\": [], \"traveler_count\": 1}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0102",
+        "success": true,
+        "wall_latency_ms": 955.664,
+        "completion_tokens": 98,
+        "generation_tokens_per_second": 107.49780571489366,
+        "json_valid": true,
+        "contract_valid_after_repair": false,
+        "contract_error": "request_keys:missing=['traveler_count']:unknown=[]",
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出行人数。\", \"missing_fields\": [\"traveler_count\"], \"request\": {\"budget_cny\": 6800, \"days\": 5, \"departure_city\": \"武汉\", \"destination\": \"西安\", \"hotel_preference\": \"市中心\", \"start_date\": \"2026-08-21\", \"themes\": [\"摄影\", \"自然\"]}}"
+      },
+      {
+        "id": "travel-v1.0-evaluation-0103",
+        "success": true,
+        "wall_latency_ms": 1013.848,
+        "completion_tokens": 103,
+        "generation_tokens_per_second": 106.35824166886509,
+        "json_valid": true,
+        "contract_valid_after_repair": true,
+        "contract_error": null,
+        "repair_notes": [],
+        "raw_output": "{\"action\": \"clarify\", \"message\": \"为了生成旅行方案，请补充：出发城市。\", \"missing_fields\": [\"departure_city\"], \"request\": {\"budget_cny\": 8500, \"days\": 4, \"departure_city\": null, \"destination\": \"杭州\", \"hotel_preference\": \"市中心\", \"start_date\": \"2026-08-21\", \"themes\": [\"美食\", \"休闲\"], \"traveler_count\": 2}}"
+      }
+    ]
+  }
+}

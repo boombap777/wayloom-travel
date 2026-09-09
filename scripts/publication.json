@@ -1,0 +1,6 @@
+{
+  "project": "wayloom-travel",
+  "include": ["src", "tests", "scripts", "configs", "docs", "data/raw", "data/eval", "data/manifests", "data/processed/v1.0", "reports/training", "reports/model_eval", "reports/application", "reports/deployment", ".github/workflows", "README.md", "DEV_SPEC.md", "PUBLICATION.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "pyproject.toml", "uv.lock", "requirements-train.txt", ".gitignore", ".gitattributes"],
+  "exclude": ["**/dataset_info.json", "**/*runtime_logs/**"],
+  "required": ["LICENSE", "README.md", "pyproject.toml", "uv.lock", "src/travel_itinerary/web_assets/index.html", "configs/models/qwen3_1_7b_origin.json", "data/eval/v1.0/frozen_cases.jsonl", "docs/licenses/QWEN-APACHE-2.0.txt"]
+}

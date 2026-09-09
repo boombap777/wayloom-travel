@@ -1,0 +1,11 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+# Frozen model/data/report hashes must survive Git round trips byte-for-byte.
+data/** -text
+configs/** -text
+reports/** -text
+docs/licenses/** -text

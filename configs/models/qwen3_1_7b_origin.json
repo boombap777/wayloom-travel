@@ -1,0 +1,12 @@
+{
+  "model_id": "Qwen/Qwen3-1.7B",
+  "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "license": "apache-2.0",
+  "verified_on": "2026-09-08",
+  "metadata_url": "https://huggingface.co/api/models/Qwen/Qwen3-1.7B/revision/70d244cc86ccca08cf5af4e1e306ecf908b1ad5e?blobs=true",
+  "historical_label_correction": "The original training report said Qwen/Qwen3-1.7B-Base. Its recorded shard hashes identify Qwen/Qwen3-1.7B instead. Original reports are preserved.",
+  "weights": [
+    {"filename": "model-00001-of-00002.safetensors", "bytes": 3441185608, "sha256": "169ad53ec313c3a34b06c0809216e4fc072cce444a5d4ff2b59690d064130ed5"},
+    {"filename": "model-00002-of-00002.safetensors", "bytes": 622329984, "sha256": "912becff8d60672aa8628ef08c05898d9adf17c2ad4ae3caf99b065622fdeff9"}
+  ]
+}
