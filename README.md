@@ -16,6 +16,9 @@ uv run --no-sync travel-itinerary-web
 导出；默认 `rule` 模式不需要模型，也不冒充微调结果。真实 `hf_adapter` / `llama_cpp`
 模式与制品准备见 [PUBLICATION.md](PUBLICATION.md)。UI、API 和命令行共享同一规划器。
 
+配套模型已发布：[v0.1.0 模型包与校验信息](https://github.com/boombap777/wayloom-travel/releases/tag/v0.1.0)。
+规则演示不需要下载；真实 llama.cpp 模式需要模型包和单独准备的运行文件。
+
 模型标注更正：原训练配置误填 `Qwen3-1.7B-Base`，实际分片哈希对应固定版本的
 `Qwen/Qwen3-1.7B`。原始报告保留，证据和正确下载版本见 [更正记录](docs/model-provenance.md)。
 

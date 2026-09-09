@@ -34,7 +34,8 @@ uv run --no-sync pytest --cov=travel_itinerary --cov-report=term
 ### llama.cpp
 
 将配套模型包解压到仓库根目录，保留 `models/gguf/` 和 `models/adapters/` 层级。
-模型包不是源码的一部分；由发布者单独作为 Release 资产提供，未上传前不存在公共下载链接。
+模型包不是源码的一部分；请从 [v0.1.0 Release](https://github.com/boombap777/wayloom-travel/releases/tag/v0.1.0)
+下载已发布的配套资产，并核对该页面与包内清单提供的 SHA-256。
 或自行使用以下 HF 原始检查点与本项目的 LoRA 训练/转换脚本生成对应 GGUF。
 自行准备官方 llama.cpp `llama-cli`；历史实验版本为 build 10545 / `a30273376`。
 

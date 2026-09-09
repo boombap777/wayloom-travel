@@ -3,7 +3,7 @@
   "scope": "selected working-tree files; no Git history or production certification",
   "project": "wayloom-travel",
   "file_count": 95,
-  "total_bytes": 4011376,
+  "total_bytes": 4011692,
   "passed": true,
   "findings": [],
   "files": [
@@ -39,14 +39,14 @@
     },
     {
       "path": "PUBLICATION.md",
-      "bytes": 5035,
-      "sha256": "d30ad13b26f9dc7f494e7ca82263fefdd2baac761f7e4579a8d5210b48a9dc3a",
+      "bytes": 5121,
+      "sha256": "a3c726e4bfd546ef649b825c5eba74ff9485bed37a0ec7f4efb1fabd8900db26",
       "source_export_sha256": "d30ad13b26f9dc7f494e7ca82263fefdd2baac761f7e4579a8d5210b48a9dc3a"
     },
     {
       "path": "README.md",
-      "bytes": 7640,
-      "sha256": "2a84e2a01a95b384efb5bf9ffc8035de3d4f7ae4822970be938235d85def67f4",
+      "bytes": 7870,
+      "sha256": "c1bc072fc11b5a07a24fecca142b51c5d33c0ce562329bf2b967a46128c0a7e4",
       "source_export_sha256": "2a84e2a01a95b384efb5bf9ffc8035de3d4f7ae4822970be938235d85def67f4"
     },
     {
@@ -578,5 +578,6 @@
       "source_export_sha256": "126aa789353a288e092684db267bac7c14d52ce4b15bc1604a5f3bf52dd140f4"
     }
   ],
-  "sha256_representation": "Git index blob bytes; checkout line endings may differ"
+  "sha256_representation": "Git index blob bytes; checkout line endings may differ",
+  "revision_note": "Documentation links to the published, digest-verified model release."
 }
