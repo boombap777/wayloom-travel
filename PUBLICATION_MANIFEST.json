@@ -2,8 +2,8 @@
   "schema_version": "source-publication-v1",
   "scope": "selected working-tree files; no Git history or production certification",
   "project": "wayloom-travel",
-  "file_count": 96,
-  "total_bytes": 4053066,
+  "file_count": 97,
+  "total_bytes": 4071325,
   "passed": true,
   "findings": [],
   "files": [
@@ -27,8 +27,8 @@
     },
     {
       "path": "DEV_SPEC.md",
-      "bytes": 17078,
-      "sha256": "37095ad6c22748ae35efd2b3a91931ecaa2bf62a0930a4e9accbae2e5003ac3c",
+      "bytes": 17314,
+      "sha256": "8f8536dd57d533b990fa22ae4d35886453007d56e9492f8aae9a0d60b8b7165f",
       "source_export_sha256": "37095ad6c22748ae35efd2b3a91931ecaa2bf62a0930a4e9accbae2e5003ac3c"
     },
     {
@@ -45,8 +45,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3333,
-      "sha256": "08467c7799d328698681153de0cac0d19eeb57fcad3b8a48b237f86e8d8eb437",
+      "bytes": 3421,
+      "sha256": "69912d9ccba74639f736357dabc068586f28bbc5c607917fd5b0e46f0286cfa7",
       "source_export_sha256": "2a84e2a01a95b384efb5bf9ffc8035de3d4f7ae4822970be938235d85def67f4"
     },
     {
@@ -156,6 +156,11 @@
       "bytes": 103256,
       "sha256": "d28c78055745eea02cce6b3b2d5e60eba08944b02a328e40cb19a9ee6243d085",
       "source_export_sha256": "d28c78055745eea02cce6b3b2d5e60eba08944b02a328e40cb19a9ee6243d085"
+    },
+    {
+      "path": "docs/TECHNICAL_DESIGN.md",
+      "bytes": 17935,
+      "sha256": "8ece34390c5bedf71cef352667ebbf2c8827dc1463fe20bc8d30f8fb8bb3378a"
     },
     {
       "path": "docs/data-lineage.md",
@@ -584,5 +589,5 @@
     }
   ],
   "sha256_representation": "Git index blob bytes; checkout line endings may differ",
-  "revision_note": "README wording and navigation revised; real synthetic-demo screenshots and RAG aggregate benchmark added. Runtime code, frozen datasets and model artifacts unchanged."
+  "revision_note": "Evidence-backed technical design documents added and linked from README and historical DEV_SPEC. Runtime code, frozen datasets, model artifacts and historical reports unchanged."
 }

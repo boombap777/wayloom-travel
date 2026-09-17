@@ -1,5 +1,7 @@
 # Travel Itinerary Demand Parsing and Planning Assistant — DEV SPEC
 
+> 阅读提示：本文件保留开发目标与阶段验收记录。当前实现、实际训练配置、HF/GGUF 结果及未完成事项统一说明在 [技术方案](docs/TECHNICAL_DESIGN.md)。历史目标不等于已完成实验。
+
 ## 1. Overview
 
 ### 1.1 Goal

@@ -55,6 +55,7 @@ GGUF 部署后的质量低于 HF adapter，表中分别列出两种推理方式�
 
 ## 开发与复现
 
+- [完整技术方案：需求契约、训练与部署评测](docs/TECHNICAL_DESIGN.md)
 - [训练与评测方法](docs/experiment-protocol.md)
 - [本地部署和性能测试](docs/local-deployment.md)
 - [模型来源与历史标注更正](docs/model-provenance.md)
