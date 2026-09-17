@@ -3,7 +3,7 @@
   "scope": "selected working-tree files; no Git history or production certification",
   "project": "wayloom-travel",
   "file_count": 97,
-  "total_bytes": 4071325,
+  "total_bytes": 4071510,
   "passed": true,
   "findings": [],
   "files": [
@@ -159,8 +159,8 @@
     },
     {
       "path": "docs/TECHNICAL_DESIGN.md",
-      "bytes": 17935,
-      "sha256": "8ece34390c5bedf71cef352667ebbf2c8827dc1463fe20bc8d30f8fb8bb3378a"
+      "bytes": 18120,
+      "sha256": "a55efd74961249804302bfa592634c9c0b781e07730b12c077a0dba1bd25d722"
     },
     {
       "path": "docs/data-lineage.md",
